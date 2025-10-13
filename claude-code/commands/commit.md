@@ -1,16 +1,20 @@
 ---
-allowed-tools: Task, Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git commit:*), Bash(git log:*), Bash(git show:*), Read, Glob, Grep, TodoWrite
+allowed-tools: "Task, Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git commit:*), Bash(git log:*), Bash(git show:*), Read, Glob, Grep, TodoWrite"
 description: |
   Create well-formatted git commits following project conventions - supports single or multiple logically grouped commits
-  argument-hint: [ --multi[=N] | --co-authored | --contributed | --no-attribution | --include-untracked ] [ paths... ] [ message ] - e.g., "--multi" or "--multi=3" for multiple commits or "tests/" for specific paths
+argument-hint: "[ --multi[=N] | --co-authored | --contributed | --no-attribution | --include-untracked ] [ paths... ] [ message ] - e.g., \"--multi\" or \"--multi=3\" for multiple commits or \"tests/\" for specific paths"
+agpm:
+  templating: true
 dependencies:
   snippets:
-    - path: snippets/commands/commit.md
+    - name: commit-base
+      path: ../../snippets/commands/commit.md
+      tool: agpm
 ---
 
 **IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
 
-- `.agpm/snippets/commands/commit.md`
+- `{{ agpm.deps.snippets.commit_base.install_path }}`
 
 ## Context
 

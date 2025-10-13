@@ -1,0 +1,6 @@
+in-memoria.db
+.claude/settings.local.json
+
+# Ignore everything in examples directory except agpm.toml
+examples/*
+!examples/agpm.toml

@@ -1,8 +1,12 @@
 ---
 description: Create well-formatted git commits following project conventions - supports single or multiple logically grouped commits
+agpm:
+  templating: true
 dependencies:
   snippets:
-    - path: snippets/commands/commit.md
+    - name: commit_logic
+      path: ../../snippets/commands/commit.md
+      tool: agpm
 ---
 
 ## Your task
@@ -13,9 +17,15 @@ Create well-formatted git commits following project conventions.
 
 **IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
 
-- `.agpm/snippets/commands/commit.md`
+- `{{ agpm.deps.snippets.commit_base.install_path }}`
 
 ## Argument Parsing
+
+Parse the arguments from the command invocation:
+
+- Arguments received: $ARGUMENTS
+- Parse flags first, then paths, then message (after `--` separator)
+- Pass parsed arguments to the sub-logic referenced above
 
 Parse the arguments using this convention:
 
@@ -41,12 +51,6 @@ Parse the arguments using this convention:
 /commit -- feat: quick fix           # flag + message (no paths)
 /commit .opencode -- docs: update opencode agents    # path + message
 ```
-
-Parse the arguments from the command invocation:
-
-- Arguments received: $ARGUMENTS
-- Parse flags first, then paths, then message (after `--` separator)
-- Pass parsed arguments to the sub-logic in `.agpm/snippets/commands/commit.md`
 
 ## Execution
 

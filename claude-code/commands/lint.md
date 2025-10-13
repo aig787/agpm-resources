@@ -1,0 +1,49 @@
+---
+allowed-tools: "Task, Bash, Read"
+description: |
+  Run code quality checks (formatting, linting, type checking) based on the language style guide
+argument-hint: "[ --fix | --check ] [ --all ] [ --doc ] [ --test ] - e.g., \"--fix --test\" or \"--check --all\""
+agpm:
+  templating: true
+dependencies:
+  snippets:
+    - name: lint-command
+      path: ../../snippets/commands/lint.md
+      tool: agpm
+  agents:
+    - name: linting-standard
+      path: ../agents/linting-standard.md
+      tool: claude-code
+    - name: linting-advanced
+      path: ../agents/linting-advanced.md
+      tool: claude-code
+---
+
+## Context
+
+- Current working directory: !`pwd`
+
+## Argument Parsing
+
+Arguments received: $ARGUMENTS
+
+Parse the arguments for the following flags:
+- `--fix`: Apply automatic fixes where possible
+- `--check`: Run in CI mode (strict checking, fail on warnings)
+- `--all`: Run all checks including type checking and tests
+- `--doc`: Add comprehensive documentation
+- `--test`: Run tests after fixes to ensure nothing broke
+- If no arguments: Run standard checks
+
+## Command Execution
+
+Read the complete command logic from:
+- `{{ agpm.deps.snippets.lint_command.install_path }}`
+
+Execute the logic from the snippet above with the parsed arguments.
+
+## Tool-Specific Notes
+
+- This command is designed for Claude Code
+- Use the Task tool for agent delegation when complex issues are found
+- Use allowed-tools from frontmatter (Task, Bash, Read)

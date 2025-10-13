@@ -1,0 +1,35 @@
+# AGPM Manifest
+# This file defines your Claude Code resource dependencies
+# Only contains top-level resources - dependencies are pulled in automatically
+
+[project]
+language = "python"
+
+[sources]
+# Add your Git repository sources here
+# Example: official = "https://github.com/aig787/agpm-community.git"
+
+[agents]
+# Claude Code Agents
+backend-engineer = { path = "../claude-code/agents/backend-engineer.md" }
+# OpenCode Agents
+opencode-backend-engineer = { path = "../opencode/agents/backend-engineer.md", tool = "opencode" }
+
+[commands]
+# Claude Code Commands
+commit = { path = "../claude-code/commands/commit.md" }
+lint = { path = "../claude-code/commands/lint.md" }
+pr-self-review = { path = "../claude-code/commands/pr-self-review.md" }
+# OpenCode Commands
+opencode-commit = { path = "../opencode/commands/commit.md", tool = "opencode" }
+opencode-lint = { path = "../opencode/commands/lint.md", tool = "opencode" }
+opencode-pr-self-review = { path = "../opencode/commands/pr-self-review.md", tool = "opencode" }
+
+[hooks]
+# Add your hook dependencies here
+# Example: pre-commit = { source = "official", path = "hooks/pre-commit.json" }
+agpm-update = { path = "../claude-code/hooks/agpm-update.json" }
+
+[mcp-servers]
+# Add your MCP server dependencies here
+# Example: filesystem = { source = "official", path = "mcp-servers/filesystem.json" }

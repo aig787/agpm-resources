@@ -1,7 +1,11 @@
 ---
+agpm:
+  templating: true
 dependencies:
   snippets:
-      - path: snippets/rules/commit-attribution.md
+    - name: commit-attribution-rules
+      path: ../rules/commit-attribution.md
+      tool: agpm
 ---
 ## Your task
 
@@ -131,7 +135,7 @@ If no `--multi` flag, proceed with standard single commit process:
     - If `--no-attribution` flag is provided: Skip all attribution
     - If `--co-authored` flag is provided: Force co-author attribution
     - If `--contributed` flag is provided: Force contribution note
-    - If NO attribution flags are provided: Automatically determine attribution by analyzing the diff using the logic in `.agpm/snippets/rules/commit-attribution.md`
+    - If NO attribution flags are provided: Automatically determine attribution by analyzing the diff using the logic in `{{ agpm.deps.snippets.commit_attribution_rules.install_path }}`
     - Briefly explain your attribution decision
 
 6. Stage the appropriate files:

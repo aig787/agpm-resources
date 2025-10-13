@@ -1,0 +1,33 @@
+---
+description: Backend engineer for implementation, refactoring, API design. Delegates complex linting to linting-advanced.
+mode: subagent
+temperature: 0.2
+tools:
+  read: true
+  write: true
+  edit: true
+  bash: true
+  glob: true
+permission:
+  edit: allow
+  bash: ask
+agpm:
+  templating: true
+dependencies:
+  snippets:
+    - name: backend-engineer-base
+      path: ../../snippets/agents/backend-engineer.md
+      tool: agpm
+  mcp-servers:
+    - name: context7
+      path: ../mcp-servers/context7.json
+---
+
+**IMPORTANT**: This agent extends the shared base prompt. Read the complete prompt from:
+
+- `{{ agpm.deps.snippets.backend_engineer_base.install_path }}`
+
+**Additional tool-specific context**:
+
+- For OpenCode specific features, refer to OpenCode documentation
+- Agent invocation: Suggest invoking specialized agents when needed (e.g., "Please invoke linting-advanced agent")
