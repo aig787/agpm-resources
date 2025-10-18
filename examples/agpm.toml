@@ -12,18 +12,28 @@ language = "python"
 [agents]
 # Claude Code Agents
 backend-engineer = { path = "../claude-code/agents/backend-engineer.md" }
+backend-engineer-advanced = { path = "../claude-code/agents/backend-engineer-advanced.md" }
 # OpenCode Agents
 opencode-backend-engineer = { path = "../opencode/agents/backend-engineer.md", tool = "opencode" }
+opencode-backend-engineer-advanced = { path = "../opencode/agents/backend-engineer-advanced.md", tool = "opencode" }
 
 [commands]
 # Claude Code Commands
 commit = { path = "../claude-code/commands/commit.md" }
 lint = { path = "../claude-code/commands/lint.md" }
 pr-self-review = { path = "../claude-code/commands/pr-self-review.md" }
+review-docs = { path = "../claude-code/commands/review-docs.md" }
+update-docs = { path = "../claude-code/commands/update-docs.md" }
+update-docstrings = { path = "../claude-code/commands/update-docstrings.md" }
+update-agentic-context = { path = "../claude-code/commands/update-agentic-context.md" }
 # OpenCode Commands
 opencode-commit = { path = "../opencode/commands/commit.md", tool = "opencode" }
 opencode-lint = { path = "../opencode/commands/lint.md", tool = "opencode" }
 opencode-pr-self-review = { path = "../opencode/commands/pr-self-review.md", tool = "opencode" }
+opencode-review-docs = { path = "../opencode/commands/review-docs.md", tool = "opencode" }
+opencode-update-docs = { path = "../opencode/commands/update-docs.md", tool = "opencode" }
+opencode-update-docstrings = { path = "../opencode/commands/update-docstrings.md", tool = "opencode" }
+opencode-update-agentic-context = { path = "../opencode/commands/update-agentic-context.md", tool = "opencode" }
 
 [hooks]
 # Add your hook dependencies here

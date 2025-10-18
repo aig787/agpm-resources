@@ -92,9 +92,8 @@ agpm-resources/
 
 1. **Single Source of Truth**: Core logic lives in `snippets/`, eliminating duplication
 2. **Tool-Specific Customization**: Wrappers can add tool-specific context, frontmatter, and tooling
-3. **Project-Specific Context**: Claude Code wrappers can include Shore-specific details while OpenCode remains generic
-4. **Maintainability**: Updates to core logic only need to happen once
-5. **Consistency**: Agents and commands behave consistently across tools
+3. **Maintainability**: Updates to core logic only need to happen once
+4. **Consistency**: Agents and commands behave consistently across tools
 
 ## Important: Path References
 
@@ -122,36 +121,30 @@ However, when these files are installed/symlinked into a project, they exist at 
 
 ### Path Reference Examples
 
-**❌ Incorrect (using repository paths):**
+**❌ Incorrect (hardcoded paths or repository-root-relative paths):**
 ```markdown
 Read the complete agent instructions from:
 - `snippets/agents/python/backend-engineer.md`
 ```
 
-**✅ Correct (using AGPM template syntax):**
 ```yaml
-agpm:
-  templating: true
 dependencies:
   snippets:
     - name: backend-engineer-base
-      path: snippets/agents/python/backend-engineer.md
+      path: snippets/agents/python/backend-engineer.md  # WRONG: relative to repo root, not to file
       tool: agpm
----
-```
-```markdown
-Read the complete agent instructions from:
-- `{{ agpm.deps.snippets.backend_engineer_base.install_path }}`
 ```
 
-**For Claude Code:**
+**✅ Correct (using relative paths and AGPM template syntax):**
+
+**For Claude Code** (file at `claude-code/agents/python/backend-engineer.md`):
 ```yaml
 agpm:
   templating: true
 dependencies:
   snippets:
     - name: backend-engineer-base
-      path: snippets/agents/python/backend-engineer.md
+      path: ../../../snippets/agents/python/backend-engineer.md  # Relative to this file
       tool: agpm
 ---
 ```
@@ -160,14 +153,14 @@ This agent extends the shared base prompt from:
 - `{{ agpm.deps.snippets.backend_engineer_base.install_path }}`
 ```
 
-**For OpenCode:**
+**For OpenCode** (file at `opencode/agents/python/backend-engineer.md`):
 ```yaml
 agpm:
   templating: true
 dependencies:
   snippets:
     - name: backend-engineer-base
-      path: snippets/agents/python/backend-engineer.md
+      path: ../../../snippets/agents/python/backend-engineer.md  # Relative to this file
       tool: agpm
 ---
 ```
@@ -208,12 +201,31 @@ agpm:
 dependencies:
   snippets:
     - name: commit-logic
-      path: snippets/commands/commit.md
+      path: ../../snippets/commands/commit.md
       tool: agpm
     - name: backend-engineer-base
-      path: snippets/agents/python/backend-engineer.md
+      path: ../../snippets/agents/python/backend-engineer.md
       tool: agpm
 ```
+
+**CRITICAL: Dependency Paths Must Be Relative to the Declaring File**
+
+Dependency paths are **always relative to the file declaring them**, NOT relative to the repository root.
+
+**Path Calculation Examples**:
+
+| Declaring File | Dependency File | Correct Path |
+|----------------|-----------------|--------------|
+| `claude-code/commands/lint.md` | `snippets/commands/lint.md` | `../../snippets/commands/lint.md` |
+| `opencode/commands/commit.md` | `snippets/commands/commit.md` | `../../snippets/commands/commit.md` |
+| `claude-code/agents/python/backend-engineer.md` | `snippets/agents/python/backend-engineer.md` | `../../../snippets/agents/python/backend-engineer.md` |
+| `snippets/commands/lint.md` | `snippets/standards/python/lint-config.md` | `../standards/python/lint-config.md` |
+
+**Why Relative Paths Matter**:
+1. **Repository Independence**: Works regardless of where the repository is cloned
+2. **AGPM Requirement**: AGPM processes dependencies relative to the declaring file's location
+3. **Portability**: Files can be moved within the repository structure
+4. **No Hardcoding**: Avoids assumptions about repository root location
 
 ### Template Reference Syntax
 
@@ -230,7 +242,7 @@ Reference dependencies using the template syntax:
 
 ### Complete Example
 
-**Frontmatter**:
+**Frontmatter** (for a file at `claude-code/commands/commit.md`):
 ```yaml
 ---
 name: commit
@@ -240,7 +252,7 @@ agpm:
 dependencies:
   snippets:
     - name: commit-logic
-      path: snippets/commands/commit.md
+      path: ../../snippets/commands/commit.md
       tool: agpm
 ---
 ```
@@ -264,42 +276,42 @@ Your task is to create a git commit following the guidelines in the shared logic
 
 ### Common Patterns
 
-**Referencing Command Logic**:
+**Referencing Command Logic** (from `claude-code/commands/lint.md`):
 ```yaml
 agpm:
   templating: true
 dependencies:
   snippets:
     - name: lint-command
-      path: snippets/commands/lint.md
+      path: ../../snippets/commands/lint.md
       tool: agpm
 ```
 ```markdown
 Read the command logic from: `{{ agpm.deps.snippets.lint_command.install_path }}`
 ```
 
-**Referencing Agent Base**:
+**Referencing Agent Base** (from `claude-code/agents/python/backend-engineer.md`):
 ```yaml
 agpm:
   templating: true
 dependencies:
   snippets:
     - name: python-backend-base
-      path: snippets/agents/python/backend-engineer.md
+      path: ../../../snippets/agents/python/backend-engineer.md
       tool: agpm
 ```
 ```markdown
 This agent extends: `{{ agpm.deps.snippets.python_backend_base.install_path }}`
 ```
 
-**Referencing Configuration**:
+**Referencing Configuration** (from `snippets/commands/lint.md`):
 ```yaml
 agpm:
   templating: true
 dependencies:
   snippets:
     - name: lint-config
-      path: snippets/standards/python/lint-config.md
+      path: ../standards/python/lint-config.md
       tool: agpm
 ```
 ```markdown
@@ -350,7 +362,7 @@ Your development approach:
 - `color`: Visual identifier for the agent
 - `dependencies`: Reference to snippet files
 
-**Structure**:
+**Structure** (for a file at `claude-code/agents/python/backend-engineer.md`):
 ```markdown
 ---
 name: backend-engineer
@@ -362,7 +374,7 @@ agpm:
 dependencies:
   snippets:
     - name: backend-engineer-base
-      path: snippets/agents/python/backend-engineer.md
+      path: ../../../snippets/agents/python/backend-engineer.md
       tool: agpm
 ---
 
@@ -400,7 +412,7 @@ dependencies:
   - `edit: allow`, `bash: ask`, etc.
 - `dependencies`: Reference to snippet files
 
-**Structure**:
+**Structure** (for a file at `opencode/agents/python/backend-engineer.md`):
 ```markdown
 ---
 description: Python backend engineer for implementation, refactoring, API design. Delegates complex linting to linting-advanced.
@@ -421,7 +433,7 @@ agpm:
 dependencies:
   snippets:
     - name: backend-engineer-base
-      path: snippets/agents/python/backend-engineer.md
+      path: ../../../snippets/agents/python/backend-engineer.md
       tool: agpm
 ---
 
@@ -478,7 +490,7 @@ Run code quality checks for the Python project:
 - `disable-model-invocation`: Prevent automatic execution
 - `dependencies`: Reference to snippet files
 
-**Structure**:
+**Structure** (for a file at `claude-code/commands/lint.md`):
 ```markdown
 ---
 allowed-tools: Task, Bash(./build.sh lint:*), Bash(uv run ruff:*), Read
@@ -490,7 +502,7 @@ agpm:
 dependencies:
   snippets:
     - name: lint-command
-      path: snippets/commands/python/lint.md
+      path: ../../snippets/commands/lint.md
       tool: agpm
 ---
 
@@ -522,7 +534,7 @@ dependencies:
 - `subtask`: Boolean to force subagent invocation
 - `dependencies`: Reference to snippet files
 
-**Structure**:
+**Structure** (for a file at `opencode/commands/lint.md`):
 ```markdown
 ---
 description: Run code quality checks (formatting, linting, type checking) with test verification
@@ -531,7 +543,7 @@ agpm:
 dependencies:
   snippets:
     - name: lint-command
-      path: snippets/commands/python/lint.md
+      path: ../../snippets/commands/lint.md
       tool: agpm
 ---
 
