@@ -16,6 +16,7 @@ backend-engineer-advanced = { path = "../claude-code/agents/backend-engineer-adv
 # OpenCode Agents
 opencode-backend-engineer = { path = "../opencode/agents/backend-engineer.md", tool = "opencode" }
 opencode-backend-engineer-advanced = { path = "../opencode/agents/backend-engineer-advanced.md", tool = "opencode" }
+opencode-backend-pair-programmer = { path = "../opencode/agents/backend-pair-programmer.md", tool = "opencode" }
 
 [commands]
 # Claude Code Commands
