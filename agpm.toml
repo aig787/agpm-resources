@@ -47,8 +47,10 @@ resources = { snippets = { path = "snippets" } }
 # Add your command dependencies here
 import = { path = "private/claude-code/commands/import.md" }
 examples = { path = "private/claude-code/commands/update-examples.md" }
+commit = { path = "claude-code/commands/commit.md" }
 opencode-import = { path = "private/opencode/commands/import.md", tool = "opencode" }
 opencode-examples = { path = "private/opencode/commands/update-examples.md", tool = "opencode" }
+opencode-commit = { path = "opencode/commands/commit.md", tool = "opencode" }
 
 [scripts]
 # Add your script dependencies here

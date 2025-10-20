@@ -14,10 +14,16 @@ agpm.private.lock
 # AGPM managed entries - do not edit below this line
 agpm.private.toml
 agpm.private.lock
+.agpm/snippets/commands/commit.md
 .agpm/snippets/private/snippets/commands/import.md
 .agpm/snippets/private/snippets/commands/update-examples.md
+.agpm/snippets/rules/commit-attribution.md
+.claude/commands/commit.md
 .claude/commands/import.md
 .claude/commands/update-examples.md
+.claude/snippets/commands/commit.md
+.claude/snippets/rules/commit-attribution.md
+.opencode/command/commit.md
 .opencode/command/import.md
 .opencode/command/update-examples.md
 # End of AGPM managed entries

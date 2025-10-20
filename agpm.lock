@@ -19,32 +19,81 @@ dependencies = []
 tool = "agpm"
 install = true
 
-[[commands]]
-name = "import"
-path = "private/claude-code/commands/import.md"
-checksum = "sha256:0ab433182c638863e7ec9d155ade98afb0313be2f7da8233b48aa18cb3fb4abd"
-installed_at = ".claude/commands/import.md"
-dependencies = ["snippet/import-base"]
+[[snippets]]
+name = "commit-attribution-rules"
+path = "snippets/rules/commit-attribution.md"
+checksum = "sha256:04bab2d3b251a4f297da7aaab00848fd5117a629e0f42d593231f18ae7ac7486"
+installed_at = ".claude/snippets/rules/commit-attribution.md"
+dependencies = []
+install = false
 
-[[commands]]
-name = "examples"
-path = "private/claude-code/commands/update-examples.md"
-checksum = "sha256:eec40c12a8e5d7be6e8c06d9191dc78db176c60fbc92ab1ead1d6890ea8c2239"
-installed_at = ".claude/commands/update-examples.md"
-dependencies = ["snippet/update-examples-base"]
+[[snippets]]
+name = "commit_logic"
+path = "snippets/commands/commit.md"
+checksum = "sha256:c819a22047d859d0f453f7c357cb97908ba497fe7ee27f35c54eac2abaade71b"
+installed_at = ".agpm/snippets/commands/commit.md"
+dependencies = ["snippet/commit-attribution-rules"]
+tool = "agpm"
+install = false
+
+[[snippets]]
+name = "commit-base"
+path = "snippets/commands/commit.md"
+checksum = "sha256:c819a22047d859d0f453f7c357cb97908ba497fe7ee27f35c54eac2abaade71b"
+installed_at = ".claude/snippets/commands/commit.md"
+dependencies = ["snippet/commit-attribution-rules"]
+install = false
+
+[[snippets]]
+name = "commit-attribution-rules"
+path = "snippets/rules/commit-attribution.md"
+checksum = ""
+installed_at = ".agpm/snippets/rules/commit-attribution.md"
+dependencies = []
+tool = "agpm"
+install = false
 
 [[commands]]
 name = "opencode-import"
 path = "private/opencode/commands/import.md"
-checksum = "sha256:317a6182bf305dca24e5d3a9e05987b6a5690b52d3d744060808edf1e7dbf21c"
+checksum = "sha256:50518a125bcd1fadee28ffb3db68a5cd0dcbbfb9f6c49497b5ba15d39e195131"
 installed_at = ".opencode/command/import.md"
 dependencies = ["snippet/import-base"]
 tool = "opencode"
 
 [[commands]]
+name = "examples"
+path = "private/claude-code/commands/update-examples.md"
+checksum = "sha256:fdc2cfa5d6dfc94d40bc0d7348f774dbf1e12f0274dca2d10574719c75acb055"
+installed_at = ".claude/commands/update-examples.md"
+dependencies = ["snippet/update-examples-base"]
+
+[[commands]]
+name = "opencode-commit"
+path = "opencode/commands/commit.md"
+checksum = "sha256:6776534d0e8d75e5f91f61e846caa6c410b4361132f76d943cc7a3b927961728"
+installed_at = ".opencode/command/commit.md"
+dependencies = ["snippet/commit_logic"]
+tool = "opencode"
+
+[[commands]]
+name = "import"
+path = "private/claude-code/commands/import.md"
+checksum = "sha256:bcb0f4940129d7c1f97bfb7cefa19e0ce50c3dca5ee13b2f90138199f3e01d97"
+installed_at = ".claude/commands/import.md"
+dependencies = ["snippet/import-base"]
+
+[[commands]]
+name = "commit"
+path = "claude-code/commands/commit.md"
+checksum = "sha256:36057059d38a58e0ceaa4113a44c931d645b75ca75ebeda31540bee3629f60d6"
+installed_at = ".claude/commands/commit.md"
+dependencies = ["snippet/commit-base"]
+
+[[commands]]
 name = "opencode-examples"
 path = "private/opencode/commands/update-examples.md"
-checksum = "sha256:56be890518c3f85b57e3853915c37fb732ddc87fdbf18e2cae0a3b06c8116f34"
+checksum = "sha256:af205f55acb312718465105d3443b186afdad5b5bf2a880fef1dd8d5d051cf02"
 installed_at = ".opencode/command/update-examples.md"
 dependencies = ["snippet/update-examples-base"]
 tool = "opencode"
