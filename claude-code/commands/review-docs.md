@@ -8,7 +8,7 @@ dependencies:
   snippets:
     - name: review-docs-command
       path: ../../snippets/commands/review-docs.md
-      tool: agpm
+      install: false
 ---
 
 {{ agpm.deps.snippets.review_docs_command.content }}

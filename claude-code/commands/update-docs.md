@@ -8,7 +8,7 @@ dependencies:
   snippets:
     - name: update-docs-command
       path: ../../snippets/commands/update-docs.md
-      tool: agpm
+      install: false
 ---
 
 {{ agpm.deps.snippets.update_docs_command.content }}

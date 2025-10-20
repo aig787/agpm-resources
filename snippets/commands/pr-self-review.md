@@ -5,10 +5,10 @@ dependencies:
   snippets:
     - name: styleguide
       path: ../styleguides/{{ agpm.project.language }}-styleguide.md
-      tool: agpm
+      install: false
     - name: best-practices
       path: ../best-practices/{{ agpm.project.language }}-best-practices.md
-      tool: agpm
+      install: false
 ---
 
 # Pull Request Self-Review Command

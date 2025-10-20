@@ -6,7 +6,7 @@ dependencies:
   snippets:
     - name: commit_logic
       path: ../../snippets/commands/commit.md
-      tool: agpm
+      install: false
 ---
 
 ## Your task

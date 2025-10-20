@@ -8,7 +8,7 @@ dependencies:
   snippets:
     - name: update-docstrings-logic
       path: ../../snippets/commands/update-docstrings.md
-      tool: agpm
+      install: false
 ---
 
 {{ agpm.deps.snippets.update_docstrings_logic.content }}

@@ -8,7 +8,7 @@ dependencies:
   snippets:
     - name: pr-self-review-base
       path: ../../snippets/commands/pr-self-review.md
-      tool: agpm
+      install: false
 ---
 
 {{ agpm.deps.snippets.pr_self_review_base.content }}

@@ -6,7 +6,7 @@ dependencies:
   snippets:
     - name: lint-command
       path: ../../snippets/commands/lint.md
-      tool: agpm
+      install: false
   agents:
     - name: linting-standard
       path: ../agents/linting-standard.md

@@ -2,11 +2,11 @@
 description: Squash commits between specified range into a single commit, with optional intelligent regrouping, or restore from a previous squash operation
 agpm:
   templating: true
-  dependencies:
-    snippets:
-      - name: squash-base
-        path: ../../snippets/commands/squash.md
-        tool: agpm
+dependencies:
+  snippets:
+    - name: squash-base
+      path: ../../snippets/commands/squash.md
+      install: false
 ---
 
 {{ agpm.deps.snippets.squash_base.content }}

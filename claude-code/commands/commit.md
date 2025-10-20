@@ -9,7 +9,7 @@ dependencies:
   snippets:
     - name: commit-base
       path: ../../snippets/commands/commit.md
-      tool: agpm
+      install: false
 ---
 
 {{ agpm.deps.snippets.commit_base.content }}

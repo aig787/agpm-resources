@@ -6,7 +6,7 @@ dependencies:
   snippets:
     - name: update-agentic-context-logic
       path: ../../snippets/commands/update-agentic-context.md
-      tool: agpm
+      install: false
   agents:
     - name: backend-engineer
       path: ../agents/backend-engineer.md
