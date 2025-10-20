@@ -15,9 +15,7 @@ Perform a comprehensive pull request self-review based on the arguments provided
 
 **IMPORTANT**: You are being asked to directly perform a PR self-review - run the appropriate checks, delegate to agents, and generate a comprehensive report. DO NOT ask for permission or confirmation.
 
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
-
-- `{{ agpm.deps.snippets.pr_self_review_base.install_path }}`
+{{ agpm.deps.snippets.pr_self_review_base.content }}
 
 ## Argument Parsing
 

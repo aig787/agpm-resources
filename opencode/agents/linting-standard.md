@@ -20,9 +20,7 @@ dependencies:
       tool: agpm
 ---
 
-**IMPORTANT**: This agent extends the shared base prompt. Read the complete prompt from:
-
-- `{{ agpm.deps.snippets.linting_standard_base.install_path }}`
+{{ agpm.deps.snippets.linting_standard_base.content }}
 
 **Additional tool-specific context**:
 

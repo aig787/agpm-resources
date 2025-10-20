@@ -15,9 +15,7 @@ Review recent changes and ensure README.md and all documentation files accuratel
 
 **IMPORTANT**: You are being asked to directly update documentation - analyze the changes, compare against docs, and apply updates or report findings. Do NOT ask for permission or confirmation.
 
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
-
-- `{{ agpm.deps.snippets.update_docs_command.install_path }}`
+{{ agpm.deps.snippets.update_docs_command.content }}
 
 ## Argument Parsing
 

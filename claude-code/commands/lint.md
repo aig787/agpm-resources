@@ -37,10 +37,7 @@ Parse the arguments for the following flags:
 
 ## Command Execution
 
-Read the complete command logic from:
-- `{{ agpm.deps.snippets.lint_command.install_path }}`
-
-Execute the logic from the snippet above with the parsed arguments.
+{{ agpm.deps.snippets.lint_command.content }}
 
 ## Tool-Specific Notes
 

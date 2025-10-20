@@ -12,9 +12,7 @@ dependencies:
       tool: agpm
 ---
 
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
-
-- `{{ agpm.deps.snippets.commit_base.install_path }}`
+{{ agpm.deps.snippets.commit_base.content }}
 
 ## Context
 

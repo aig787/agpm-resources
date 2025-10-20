@@ -11,9 +11,7 @@ dependencies:
       tool: agpm
 ---
 
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
-
-- `{{ agpm.deps.snippets.review_docs_command.install_path }}`
+{{ agpm.deps.snippets.review_docs_command.content }}
 
 ## Context
 

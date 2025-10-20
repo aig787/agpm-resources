@@ -15,9 +15,7 @@ Create well-formatted git commits following project conventions.
 
 **IMPORTANT**: You are being asked to directly create git commits - analyze the changes, craft appropriate commit messages, and use the git commands to commit them. Do NOT ask for permission or confirmation.
 
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
-
-- `{{ agpm.deps.snippets.commit_base.install_path }}`
+{{ agpm.deps.snippets.commit_logic.content }}
 
 ## Argument Parsing
 

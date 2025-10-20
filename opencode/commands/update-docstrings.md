@@ -15,9 +15,7 @@ Review the current code changes and ensure all related documentation accurately 
 
 **IMPORTANT**: You are being asked to directly review and update documentation - analyze the changes, identify issues, and apply updates as needed. Do NOT ask for permission or confirmation.
 
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
-
-- `{{ agpm.deps.snippets.update_docstrings_logic.install_path }}`
+{{ agpm.deps.snippets.update_docstrings_logic.content }}
 
 ## Argument Parsing
 

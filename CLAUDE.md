@@ -149,8 +149,7 @@ dependencies:
 ---
 ```
 ```markdown
-This agent extends the shared base prompt from:
-- `{{ agpm.deps.snippets.backend_engineer_base.install_path }}`
+{{ agpm.deps.snippets.backend_engineer_base.content }}
 ```
 
 **For OpenCode** (file at `opencode/agents/python/backend-engineer.md`):
@@ -165,8 +164,7 @@ dependencies:
 ---
 ```
 ```markdown
-**IMPORTANT**: This agent extends the shared base prompt. Read the complete prompt from:
-- `{{ agpm.deps.snippets.backend_engineer_base.install_path }}`
+{{ agpm.deps.snippets.backend_engineer_base.content }}
 ```
 
 ### Why This Matters
@@ -232,7 +230,7 @@ Dependency paths are **always relative to the file declaring them**, NOT relativ
 Reference dependencies using the template syntax:
 
 ```
-{{ agpm.deps.snippets.<name>.install_path }}
+{{ agpm.deps.snippets.<name>.content }}
 ```
 
 **Naming Rules**:
@@ -259,11 +257,12 @@ dependencies:
 
 **Body**:
 ```markdown
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
+{{ agpm.deps.snippets.commit_logic.content }}
 
-- `{{ agpm.deps.snippets.commit_logic.install_path }}`
+## Tool-Specific Notes
 
-Your task is to create a git commit following the guidelines in the shared logic.
+- This command is designed for Claude Code
+- Use the Task tool and allowed-tools from frontmatter
 ```
 
 ### Benefits of Template Syntax
@@ -276,7 +275,7 @@ Your task is to create a git commit following the guidelines in the shared logic
 
 ### Common Patterns
 
-**Referencing Command Logic** (from `claude-code/commands/lint.md`):
+**Inserting Command Logic** (from `claude-code/commands/lint.md`):
 ```yaml
 agpm:
   templating: true
@@ -287,10 +286,12 @@ dependencies:
       tool: agpm
 ```
 ```markdown
-Read the command logic from: `{{ agpm.deps.snippets.lint_command.install_path }}`
+## Command Execution
+
+{{ agpm.deps.snippets.lint_command.content }}
 ```
 
-**Referencing Agent Base** (from `claude-code/agents/python/backend-engineer.md`):
+**Inserting Agent Content** (from `claude-code/agents/python/backend-engineer.md`):
 ```yaml
 agpm:
   templating: true
@@ -301,21 +302,35 @@ dependencies:
       tool: agpm
 ```
 ```markdown
-This agent extends: `{{ agpm.deps.snippets.python_backend_base.install_path }}`
+{{ agpm.deps.snippets.python_backend_base.content }}
+
+## Tool-Specific Notes
+
+- This agent is designed for Claude Code
+- Use the Task tool to delegate complex tasks
 ```
 
-**Referencing Configuration** (from `snippets/commands/lint.md`):
+**Inserting Configuration Content** (from `snippets/agents/backend-engineer.md`):
 ```yaml
 agpm:
   templating: true
 dependencies:
   snippets:
-    - name: lint-config
-      path: ../standards/python/lint-config.md
+    - name: best-practices
+      path: ../best-practices/python-best-practices.md
+      tool: agpm
+    - name: styleguide
+      path: ../styleguides/python-styleguide.md
       tool: agpm
 ```
 ```markdown
-Configuration file: `{{ agpm.deps.snippets.lint_config.install_path }}`
+## Best Practices
+
+{{ agpm.deps.snippets.best_practices.content }}
+
+## Style Guide
+
+{{ agpm.deps.snippets.styleguide.content }}
 ```
 
 ## Creating Agents
@@ -378,9 +393,7 @@ dependencies:
       tool: agpm
 ---
 
-**IMPORTANT**: This agent extends the shared base prompt. Read the complete agent instructions from:
-
-- `{{ agpm.deps.snippets.backend_engineer_base.install_path }}`
+{{ agpm.deps.snippets.backend_engineer_base.content }}
 
 ## Project-Specific Context
 
@@ -437,9 +450,7 @@ dependencies:
       tool: agpm
 ---
 
-**IMPORTANT**: This agent extends the shared base prompt. Read the complete prompt from:
-
-- `{{ agpm.deps.snippets.backend_engineer_base.install_path }}`
+{{ agpm.deps.snippets.backend_engineer_base.content }}
 
 **Additional tool-specific context**:
 
@@ -506,9 +517,7 @@ dependencies:
       tool: agpm
 ---
 
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
-
-- `{{ agpm.deps.snippets.lint_command.install_path }}`
+{{ agpm.deps.snippets.lint_command.content }}
 
 ## Context
 
@@ -553,9 +562,7 @@ Run code quality checks for the Python project.
 
 **IMPORTANT**: You are being asked to directly perform code quality checks - run the appropriate commands, apply fixes if requested, and report the results. Do NOT ask for permission or confirmation.
 
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
-
-- `{{ agpm.deps.snippets.lint_command.install_path }}`
+{{ agpm.deps.snippets.lint_command.content }}
 
 ## Argument Parsing
 
@@ -756,12 +763,13 @@ permissions:
 2. **Add Context in Wrappers**: Project-specific details belong in Claude Code/OpenCode wrappers
 3. **Use Dependencies**: Always reference snippets using the `dependencies` frontmatter
 4. **Document Examples**: Include clear usage examples in agent descriptions
-5. **Use Template Syntax**: Always reference dependencies using AGPM template syntax (`{{ agpm.deps.snippets.<name>.install_path }}`), never hardcoded paths
+5. **Use Template Syntax**: Always reference dependencies using AGPM template syntax (`{{ agpm.deps.snippets.<name>.content }}`), never hardcoded paths
 6. **Name All Dependencies**: Every dependency must have a `name` field in the frontmatter
 7. **Enable Templating**: Any artifact using template syntax must have `agpm: templating: true` in the frontmatter
 8. **Version Control**: Keep all three directories in sync when updating logic
 9. **Test Both Tools**: Verify agents/commands work in both Claude Code and OpenCode
 10. **Tool-Specific Features**: Use wrapper sections for tool-specific notes and requirements
+11. **All AGPM Artifacts**: **ALL artifacts that will be installed via AGPM (including private/project-specific commands) must follow the split architecture pattern** - no exceptions
 
 ## Directory Structure Requirements
 
@@ -837,4 +845,4 @@ See the following files for complete examples (repository paths shown):
 - `opencode/commands/lint.md` (OpenCode wrapper)
 - Project-specific: `.agpm/snippets/lint-config.md` (installed in each project)
 
-**Note**: When these files reference each other, they use AGPM template syntax like `{{ agpm.deps.snippets.<name>.install_path }}` rather than hardcoded paths.
+**Note**: When these files reference each other, they use AGPM template syntax like `{{ agpm.deps.snippets.<name>.content }}` rather than hardcoded paths.

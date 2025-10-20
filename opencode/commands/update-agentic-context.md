@@ -22,9 +22,7 @@ Review code changes and update AI context files (CLAUDE.md, AGENTS.md) to reflec
 
 **IMPORTANT**: You are being asked to directly review changes and update context files - analyze the diff, read the files, apply updates, and report results. Do NOT ask for permission or confirmation.
 
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
-
-- `{{ agpm.deps.snippets.update_agentic_context_logic.install_path }}`
+{{ agpm.deps.snippets.update_agentic_context_logic.content }}
 
 ## Argument Parsing
 

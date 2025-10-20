@@ -15,9 +15,7 @@ Review all markdown files in the docs/ directory and ensure they accurately refl
 
 **IMPORTANT**: You are being asked to directly review documentation - analyze the docs, compare against implementation, and apply updates or report findings. Do NOT ask for permission or confirmation.
 
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
-
-- `{{ agpm.deps.snippets.review_docs_command.install_path }}`
+{{ agpm.deps.snippets.review_docs_command.content }}
 
 ## Argument Parsing
 

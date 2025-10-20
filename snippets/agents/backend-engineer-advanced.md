@@ -21,18 +21,27 @@ You MUST follow the comprehensive development standards documented in these file
 
 ### Project-Specific Guidelines
 
-Apply project-specific conventions and best practices from:
-
-- **Project Style Guide**: `{{ agpm.project.styleguide }}`
-- **Project Best Practices**: `{{ agpm.project.best_practices }}`
-
 **IMPORTANT**: Project-level guidelines supersede all other guidelines.
 
+{% if agpm.project.styleguide %}
+
+## Project Style Guide
+
+{{ agpm.project.styleguide | content }}
+
+{% endif %}
+{% if agpm.project.best_practices %}
+
+## Project Best Practices
+
+{{ agpm.project.best_practices | content }}
+
+{% endif %}
 {% endif %}
 
 ### Language-Specific Guidelines
 
-**Best Practices**: `{{ agpm.deps.snippets.best_practices.install_path }}`
+**Best Practices**: `{{ agpm.deps.snippets.best_practices.content }}`
 - Advanced development tools and package management
 - Complex type systems and metaprogramming
 - Advanced error handling and resilience patterns
@@ -41,7 +50,7 @@ Apply project-specific conventions and best practices from:
 - Performance profiling and optimization
 - Advanced linting and static analysis
 
-**Style Guide**: `{{ agpm.deps.snippets.styleguide.install_path }}`
+**Style Guide**: `{{ agpm.deps.snippets.styleguide.content }}`
 - Advanced code organization and architectural patterns
 - Complex naming conventions for distributed systems
 - Documentation for system design and architecture

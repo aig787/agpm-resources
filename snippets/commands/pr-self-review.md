@@ -17,24 +17,34 @@ dependencies:
 
 This command performs comprehensive pull request self-reviews following standardized review guidelines and language-specific style conventions. These guidelines apply across languages and frameworks, focusing on code quality, security, performance, and maintainability.
 
-{% if agpm.project.styleguide or  agpm.project.best_practices %}
+{% if agpm.project.styleguide or agpm.project.best_practices %}
 
 ## Project Specific Guidelines
 
-Apply project-specific conventions and best practices from:
-
-- **Project Style Guide**: `{{ agpm.project.styleguide }}`
-- **Project Best Practices**: `{{ agpm.project.best_practices }}`
-
 **IMPORTANT**: Project-level guidelines supercede all other guidelines.
+
+{% if agpm.project.styleguide %}
+
+### Project Style Guide
+
+{{ agpm.project.styleguide | content }}
+
+{% endif %}
+{% if agpm.project.best_practices %}
+
+### Project Best Practices
+
+{{ agpm.project.best_practices | content }}
+
+{% endif %}
 {% endif %}
 
 ## Language-Specific Guidelines
 
 Apply language-specific conventions and best practices from:
 
-- **Style Guide**: `{{ agpm.deps.snippets.styleguide.install_path }}`
-- **Best Practices**: `{{ agpm.deps.snippets.best_practices.install_path }}`
+- **Style Guide**: `{{ agpm.deps.snippets.styleguide.content }}`
+- **Best Practices**: `{{ agpm.deps.snippets.best_practices.content }}`
 
 These files ensure code follows established patterns, idioms, and best practices for the target language.
 
@@ -427,19 +437,13 @@ Perform a comprehensive pull request self-review based on the arguments provided
 
 ## Execution Steps
 
-### Step 1: Read Required Files
+### Step 1: Review Standards
 
-Read the following files IN PARALLEL:
+All required standards have been embedded above:
+- Project-specific guidelines (if configured)
+- Language-specific style guide and best practices
 
-{% if agpm.project.styleguide %}
-
-- Project style guide: `{{ agpm.project.styleguide }}`
-  {% endif %}
-  {% if agpm.project.best_practices %}
-- Project best practices: `{{ agpm.project.best_practices }}`
-  {% endif %}
-- Language style guide: `{{ agpm.deps.snippets.styleguide.install_path }}`
-- Language best practices: `{{ agpm.deps.snippets.best_practices.install_path }}`
+Use these standards to evaluate the changes.
 
 ### Step 2: Parse Review Type
 

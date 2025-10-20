@@ -15,7 +15,7 @@ Run code quality checks for the project based on the language-specific style gui
 ## Language Style Guide
 
 **Read the language-specific style guide at**:
-- `{{ agpm.deps.snippets.language_styleguide.install_path }}`
+- `{{ agpm.deps.snippets.language_styleguide.content }}`
 
 This guide contains:
 - **Formatting standards**: Which tools to use (e.g., ruff, prettier, gofmt)

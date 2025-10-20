@@ -4,6 +4,8 @@
 
 [project]
 language = "python"
+best_practices = "best_practices.md"
+styleguide = "styleguide.md"
 
 [sources]
 # Add your Git repository sources here
@@ -13,28 +15,36 @@ language = "python"
 # Claude Code Agents
 backend-engineer = { path = "../claude-code/agents/backend-engineer.md" }
 backend-engineer-advanced = { path = "../claude-code/agents/backend-engineer-advanced.md" }
+general-purpose = { path = "../claude-code/agents/general-purpose.md" }
+linting-advanced = { path = "../claude-code/agents/linting-advanced.md" }
+linting-standard = { path = "../claude-code/agents/linting-standard.md" }
 # OpenCode Agents
 opencode-backend-engineer = { path = "../opencode/agents/backend-engineer.md", tool = "opencode" }
 opencode-backend-engineer-advanced = { path = "../opencode/agents/backend-engineer-advanced.md", tool = "opencode" }
 opencode-backend-pair-programmer = { path = "../opencode/agents/backend-pair-programmer.md", tool = "opencode" }
+opencode-general-purpose = { path = "../opencode/agents/general-purpose.md", tool = "opencode" }
+opencode-linting-advanced = { path = "../opencode/agents/linting-advanced.md", tool = "opencode" }
+opencode-linting-standard = { path = "../opencode/agents/linting-standard.md", tool = "opencode" }
 
 [commands]
 # Claude Code Commands
 commit = { path = "../claude-code/commands/commit.md" }
+gh-pr-create = { path = "../claude-code/commands/gh-pr-create.md" }
 lint = { path = "../claude-code/commands/lint.md" }
 pr-self-review = { path = "../claude-code/commands/pr-self-review.md" }
 review-docs = { path = "../claude-code/commands/review-docs.md" }
+update-agentic-context = { path = "../claude-code/commands/update-agentic-context.md" }
 update-docs = { path = "../claude-code/commands/update-docs.md" }
 update-docstrings = { path = "../claude-code/commands/update-docstrings.md" }
-update-agentic-context = { path = "../claude-code/commands/update-agentic-context.md" }
 # OpenCode Commands
 opencode-commit = { path = "../opencode/commands/commit.md", tool = "opencode" }
+opencode-gh-pr-create = { path = "../opencode/commands/gh-pr-create.md", tool = "opencode" }
 opencode-lint = { path = "../opencode/commands/lint.md", tool = "opencode" }
 opencode-pr-self-review = { path = "../opencode/commands/pr-self-review.md", tool = "opencode" }
 opencode-review-docs = { path = "../opencode/commands/review-docs.md", tool = "opencode" }
+opencode-update-agentic-context = { path = "../opencode/commands/update-agentic-context.md", tool = "opencode" }
 opencode-update-docs = { path = "../opencode/commands/update-docs.md", tool = "opencode" }
 opencode-update-docstrings = { path = "../opencode/commands/update-docstrings.md", tool = "opencode" }
-opencode-update-agentic-context = { path = "../opencode/commands/update-agentic-context.md", tool = "opencode" }
 
 [hooks]
 # Add your hook dependencies here

@@ -23,9 +23,7 @@ dependencies:
       path: ../mcp-servers/context7.json
 ---
 
-**IMPORTANT**: This agent extends the shared base prompt. Read the complete prompt from:
-
-- `{{ agpm.deps.snippets.backend_engineer_advanced_base.install_path }}`
+{{ agpm.deps.snippets.backend_engineer_advanced_base.content }}
 
 ## When to Use This Agent
 

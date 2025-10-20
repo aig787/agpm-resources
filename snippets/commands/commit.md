@@ -135,7 +135,7 @@ If no `--multi` flag, proceed with standard single commit process:
     - If `--no-attribution` flag is provided: Skip all attribution
     - If `--co-authored` flag is provided: Force co-author attribution
     - If `--contributed` flag is provided: Force contribution note
-    - If NO attribution flags are provided: Automatically determine attribution by analyzing the diff using the logic in `{{ agpm.deps.snippets.commit_attribution_rules.install_path }}`
+    - If NO attribution flags are provided: Automatically determine attribution by analyzing the diff using the logic in `{{ agpm.deps.snippets.commit_attribution_rules.content }}`
     - Briefly explain your attribution decision
 
 6. Stage the appropriate files:

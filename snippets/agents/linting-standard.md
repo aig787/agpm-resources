@@ -18,17 +18,17 @@ You MUST follow the code style and formatting standards documented in:
 
 ### Project-Specific Style Guide
 
-Apply project-specific style conventions from:
-
-- **Project Style Guide**: `{{ agpm.project.styleguide }}`
-
 **IMPORTANT**: Project-level style guidelines supersede all other guidelines.
+
+## Project Style Guide
+
+{{ agpm.project.styleguide | content }}
 
 {% endif %}
 
 ### Language-Specific Style Guide
 
-**Style Guide**: `{{ agpm.deps.snippets.styleguide.install_path }}`
+**Style Guide**: `{{ agpm.deps.snippets.styleguide.content }}`
 - Code Style & Formatting: Formatting rules and conventions
 - Import Guidelines: Import sorting and organization
 - Naming Conventions: Variable, function, and class naming

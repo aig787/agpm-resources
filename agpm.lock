@@ -1,0 +1,50 @@
+# Auto-generated lockfile - DO NOT EDIT
+version = 1
+
+[[snippets]]
+name = "import-base"
+path = "private/snippets/commands/import.md"
+checksum = "sha256:3717c762bcbc3e0d946547878810f67ae056dc6bb974d90c7b7022879977d99c"
+installed_at = ".agpm/snippets/private/snippets/commands/import.md"
+dependencies = []
+tool = "agpm"
+install = true
+
+[[snippets]]
+name = "update-examples-base"
+path = "private/snippets/commands/update-examples.md"
+checksum = "sha256:7f778dd63c57f34c6dd0e4233a8f07db347d4b51ea16397dedc039eec25505e8"
+installed_at = ".agpm/snippets/private/snippets/commands/update-examples.md"
+dependencies = []
+tool = "agpm"
+install = true
+
+[[commands]]
+name = "import"
+path = "private/claude-code/commands/import.md"
+checksum = "sha256:0ab433182c638863e7ec9d155ade98afb0313be2f7da8233b48aa18cb3fb4abd"
+installed_at = ".claude/commands/import.md"
+dependencies = ["snippet/import-base"]
+
+[[commands]]
+name = "examples"
+path = "private/claude-code/commands/update-examples.md"
+checksum = "sha256:eec40c12a8e5d7be6e8c06d9191dc78db176c60fbc92ab1ead1d6890ea8c2239"
+installed_at = ".claude/commands/update-examples.md"
+dependencies = ["snippet/update-examples-base"]
+
+[[commands]]
+name = "opencode-import"
+path = "private/opencode/commands/import.md"
+checksum = "sha256:317a6182bf305dca24e5d3a9e05987b6a5690b52d3d744060808edf1e7dbf21c"
+installed_at = ".opencode/command/import.md"
+dependencies = ["snippet/import-base"]
+tool = "opencode"
+
+[[commands]]
+name = "opencode-examples"
+path = "private/opencode/commands/update-examples.md"
+checksum = "sha256:56be890518c3f85b57e3853915c37fb732ddc87fdbf18e2cae0a3b06c8116f34"
+installed_at = ".opencode/command/update-examples.md"
+dependencies = ["snippet/update-examples-base"]
+tool = "opencode"

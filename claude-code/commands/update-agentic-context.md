@@ -18,9 +18,7 @@ dependencies:
       tool: claude-code
 ---
 
-**IMPORTANT**: This command extends the shared base prompt. Read the complete command logic from:
-
-- `{{ agpm.deps.snippets.update_agentic_context_logic.install_path }}`
+{{ agpm.deps.snippets.update_agentic_context_logic.content }}
 
 ## Context
 
