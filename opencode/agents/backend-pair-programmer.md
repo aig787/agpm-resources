@@ -18,10 +18,10 @@ agpm:
     snippets:
       - name: best-practices
         path: ../../snippets/best-practices/{{ agpm.project.language }}-best-practices.md
-        tool: agpm
+        install: false
       - name: styleguide
         path: ../../snippets/styleguides/{{ agpm.project.language }}-styleguide.md
-        tool: agpm
+        install: false
   mcp-servers:
     - name: context7
       path: ../mcp-servers/context7.json

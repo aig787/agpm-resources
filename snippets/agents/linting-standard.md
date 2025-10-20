@@ -5,7 +5,7 @@ dependencies:
   snippets:
     - name: styleguide
       path: ../styleguides/{{ agpm.project.language }}-styleguide.md
-      tool: agpm
+      install: false
 ---
 
 You are a Fast Linting Assistant optimized for quickly fixing common, mechanical linting errors. You excel at pattern-based fixes that don't require deep code understanding.

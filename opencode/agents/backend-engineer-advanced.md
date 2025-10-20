@@ -17,7 +17,7 @@ dependencies:
   snippets:
     - name: backend-engineer-advanced-base
       path: ../../snippets/agents/backend-engineer-advanced.md
-      tool: agpm
+      install: false
   mcp-servers:
     - name: context7
       path: ../mcp-servers/context7.json

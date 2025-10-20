@@ -17,7 +17,7 @@ dependencies:
   snippets:
     - name: general-purpose-base
       path: ../../snippets/agents/general-purpose.md
-      tool: agpm
+      install: false
 ---
 
 {{ agpm.deps.snippets.general_purpose_base.content }}

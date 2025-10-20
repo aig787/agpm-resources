@@ -10,7 +10,7 @@ dependencies:
   snippets:
     - name: linting-advanced-base
       path: ../../snippets/agents/linting-advanced.md
-      tool: agpm
+      install: false
 ---
 
 {{ agpm.deps.snippets.linting_advanced_base.content }}
