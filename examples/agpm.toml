@@ -13,35 +13,153 @@ styleguide = "styleguide.md"
 
 [agents]
 # Claude Code Agents
-backend-engineer = { path = "../claude-code/agents/backend-engineer.md" }
-backend-engineer-advanced = { path = "../claude-code/agents/backend-engineer-advanced.md" }
+# Template variants for backend-engineer (language: golang, java, javascript, python, rust, typescript)
+backend-engineer-golang = { path = "../claude-code/agents/backend-engineer.md", filename = "backend-engineer-golang", template_vars = { project = { language = "golang" } } }
+backend-engineer-java = { path = "../claude-code/agents/backend-engineer.md", filename = "backend-engineer-java", template_vars = { project = { language = "java" } } }
+backend-engineer-javascript = { path = "../claude-code/agents/backend-engineer.md", filename = "backend-engineer-javascript", template_vars = { project = { language = "javascript" } } }
+backend-engineer-python = { path = "../claude-code/agents/backend-engineer.md", filename = "backend-engineer-python", template_vars = { project = { language = "python" } } }
+backend-engineer-rust = { path = "../claude-code/agents/backend-engineer.md", filename = "backend-engineer-rust", template_vars = { project = { language = "rust" } } }
+backend-engineer-typescript = { path = "../claude-code/agents/backend-engineer.md", filename = "backend-engineer-typescript", template_vars = { project = { language = "typescript" } } }
+# Template variants for backend-engineer-advanced (language: golang, java, javascript, python, rust, typescript)
+backend-engineer-advanced-golang = { path = "../claude-code/agents/backend-engineer-advanced.md", filename = "backend-engineer-advanced-golang", template_vars = { project = { language = "golang" } } }
+backend-engineer-advanced-java = { path = "../claude-code/agents/backend-engineer-advanced.md", filename = "backend-engineer-advanced-java", template_vars = { project = { language = "java" } } }
+backend-engineer-advanced-javascript = { path = "../claude-code/agents/backend-engineer-advanced.md", filename = "backend-engineer-advanced-javascript", template_vars = { project = { language = "javascript" } } }
+backend-engineer-advanced-python = { path = "../claude-code/agents/backend-engineer-advanced.md", filename = "backend-engineer-advanced-python", template_vars = { project = { language = "python" } } }
+backend-engineer-advanced-rust = { path = "../claude-code/agents/backend-engineer-advanced.md", filename = "backend-engineer-advanced-rust", template_vars = { project = { language = "rust" } } }
+backend-engineer-advanced-typescript = { path = "../claude-code/agents/backend-engineer-advanced.md", filename = "backend-engineer-advanced-typescript", template_vars = { project = { language = "typescript" } } }
+# Template variants for frontend-engineer (language: javascript, typescript; framework: angular, react, vue)
+frontend-engineer-javascript = { path = "../claude-code/agents/frontend-engineer.md", filename = "frontend-engineer-javascript", template_vars = { project = { language = "javascript" } } }
+frontend-engineer-javascript-angular = { path = "../claude-code/agents/frontend-engineer.md", filename = "frontend-engineer-javascript-angular", template_vars = { project = { language = "javascript", framework = "angular" } } }
+frontend-engineer-javascript-react = { path = "../claude-code/agents/frontend-engineer.md", filename = "frontend-engineer-javascript-react", template_vars = { project = { language = "javascript", framework = "react" } } }
+frontend-engineer-javascript-vue = { path = "../claude-code/agents/frontend-engineer.md", filename = "frontend-engineer-javascript-vue", template_vars = { project = { language = "javascript", framework = "vue" } } }
+frontend-engineer-typescript = { path = "../claude-code/agents/frontend-engineer.md", filename = "frontend-engineer-typescript", template_vars = { project = { language = "typescript" } } }
+frontend-engineer-typescript-angular = { path = "../claude-code/agents/frontend-engineer.md", filename = "frontend-engineer-typescript-angular", template_vars = { project = { language = "typescript", framework = "angular" } } }
+frontend-engineer-typescript-react = { path = "../claude-code/agents/frontend-engineer.md", filename = "frontend-engineer-typescript-react", template_vars = { project = { language = "typescript", framework = "react" } } }
+frontend-engineer-typescript-vue = { path = "../claude-code/agents/frontend-engineer.md", filename = "frontend-engineer-typescript-vue", template_vars = { project = { language = "typescript", framework = "vue" } } }
+# Note: Frontend engineers only support frontend languages (javascript, typescript)
 general-purpose = { path = "../claude-code/agents/general-purpose.md" }
-linting-advanced = { path = "../claude-code/agents/linting-advanced.md" }
-linting-standard = { path = "../claude-code/agents/linting-standard.md" }
+git-expert = { path = "../claude-code/agents/git-expert.md" }
+github-actions-expert = { path = "../claude-code/agents/github-actions-expert.md" }
+k8s-expert = { path = "../claude-code/agents/k8s-expert.md" }
+# Template variants for linting-advanced (language: golang, java, javascript, python, rust, typescript)
+linting-advanced-golang = { path = "../claude-code/agents/linting-advanced.md", filename = "linting-advanced-golang", template_vars = { project = { language = "golang" } } }
+linting-advanced-java = { path = "../claude-code/agents/linting-advanced.md", filename = "linting-advanced-java", template_vars = { project = { language = "java" } } }
+linting-advanced-javascript = { path = "../claude-code/agents/linting-advanced.md", filename = "linting-advanced-javascript", template_vars = { project = { language = "javascript" } } }
+linting-advanced-python = { path = "../claude-code/agents/linting-advanced.md", filename = "linting-advanced-python", template_vars = { project = { language = "python" } } }
+linting-advanced-rust = { path = "../claude-code/agents/linting-advanced.md", filename = "linting-advanced-rust", template_vars = { project = { language = "rust" } } }
+linting-advanced-typescript = { path = "../claude-code/agents/linting-advanced.md", filename = "linting-advanced-typescript", template_vars = { project = { language = "typescript" } } }
+# Template variants for linting-standard (language: golang, java, javascript, python, rust, typescript)
+linting-standard-golang = { path = "../claude-code/agents/linting-standard.md", filename = "linting-standard-golang", template_vars = { project = { language = "golang" } } }
+linting-standard-java = { path = "../claude-code/agents/linting-standard.md", filename = "linting-standard-java", template_vars = { project = { language = "java" } } }
+linting-standard-javascript = { path = "../claude-code/agents/linting-standard.md", filename = "linting-standard-javascript", template_vars = { project = { language = "javascript" } } }
+linting-standard-python = { path = "../claude-code/agents/linting-standard.md", filename = "linting-standard-python", template_vars = { project = { language = "python" } } }
+linting-standard-rust = { path = "../claude-code/agents/linting-standard.md", filename = "linting-standard-rust", template_vars = { project = { language = "rust" } } }
+linting-standard-typescript = { path = "../claude-code/agents/linting-standard.md", filename = "linting-standard-typescript", template_vars = { project = { language = "typescript" } } }
+# Note: No framework variants for linting agents (linting is language-specific, not framework-specific)
 # OpenCode Agents
-opencode-backend-engineer = { path = "../opencode/agents/backend-engineer.md", tool = "opencode" }
 opencode-backend-engineer-advanced = { path = "../opencode/agents/backend-engineer-advanced.md", tool = "opencode" }
-opencode-backend-pair-programmer = { path = "../opencode/agents/backend-pair-programmer.md", tool = "opencode" }
+# Template variants for opencode-backend-engineer (language: golang, java, javascript, python, rust, typescript)
+opencode-backend-engineer-golang = { path = "../opencode/agents/backend-engineer.md", filename = "opencode-backend-engineer-golang", template_vars = { project = { language = "golang" } }, tool = "opencode" }
+opencode-backend-engineer-java = { path = "../opencode/agents/backend-engineer.md", filename = "opencode-backend-engineer-java", template_vars = { project = { language = "java" } }, tool = "opencode" }
+opencode-backend-engineer-javascript = { path = "../opencode/agents/backend-engineer.md", filename = "opencode-backend-engineer-javascript", template_vars = { project = { language = "javascript" } }, tool = "opencode" }
+opencode-backend-engineer-python = { path = "../opencode/agents/backend-engineer.md", filename = "opencode-backend-engineer-python", template_vars = { project = { language = "python" } }, tool = "opencode" }
+opencode-backend-engineer-rust = { path = "../opencode/agents/backend-engineer.md", filename = "opencode-backend-engineer-rust", template_vars = { project = { language = "rust" } }, tool = "opencode" }
+opencode-backend-engineer-typescript = { path = "../opencode/agents/backend-engineer.md", filename = "opencode-backend-engineer-typescript", template_vars = { project = { language = "typescript" } }, tool = "opencode" }
+# Template variants for opencode-backend-engineer-advanced (language: golang, java, javascript, python, rust, typescript)
+opencode-backend-engineer-advanced-golang = { path = "../opencode/agents/backend-engineer-advanced.md", filename = "opencode-backend-engineer-advanced-golang", template_vars = { project = { language = "golang" } }, tool = "opencode" }
+opencode-backend-engineer-advanced-java = { path = "../opencode/agents/backend-engineer-advanced.md", filename = "opencode-backend-engineer-advanced-java", template_vars = { project = { language = "java" } }, tool = "opencode" }
+opencode-backend-engineer-advanced-javascript = { path = "../opencode/agents/backend-engineer-advanced.md", filename = "opencode-backend-engineer-advanced-javascript", template_vars = { project = { language = "javascript" } }, tool = "opencode" }
+opencode-backend-engineer-advanced-python = { path = "../opencode/agents/backend-engineer-advanced.md", filename = "opencode-backend-engineer-advanced-python", template_vars = { project = { language = "python" } }, tool = "opencode" }
+opencode-backend-engineer-advanced-rust = { path = "../opencode/agents/backend-engineer-advanced.md", filename = "opencode-backend-engineer-advanced-rust", template_vars = { project = { language = "rust" } }, tool = "opencode" }
+opencode-backend-engineer-advanced-typescript = { path = "../opencode/agents/backend-engineer-advanced.md", filename = "opencode-backend-engineer-advanced-typescript", template_vars = { project = { language = "typescript" } }, tool = "opencode" }
+# Template variants for opencode-backend-pair-programmer (language: golang, java, javascript, python, rust, typescript)
+opencode-backend-pair-programmer-golang = { path = "../opencode/agents/backend-pair-programmer.md", filename = "opencode-backend-pair-programmer-golang", template_vars = { project = { language = "golang" } }, tool = "opencode" }
+opencode-backend-pair-programmer-java = { path = "../opencode/agents/backend-pair-programmer.md", filename = "opencode-backend-pair-programmer-java", template_vars = { project = { language = "java" } }, tool = "opencode" }
+opencode-backend-pair-programmer-javascript = { path = "../opencode/agents/backend-pair-programmer.md", filename = "opencode-backend-pair-programmer-javascript", template_vars = { project = { language = "javascript" } }, tool = "opencode" }
+opencode-backend-pair-programmer-python = { path = "../opencode/agents/backend-pair-programmer.md", filename = "opencode-backend-pair-programmer-python", template_vars = { project = { language = "python" } }, tool = "opencode" }
+opencode-backend-pair-programmer-rust = { path = "../opencode/agents/backend-pair-programmer.md", filename = "opencode-backend-pair-programmer-rust", template_vars = { project = { language = "rust" } }, tool = "opencode" }
+opencode-backend-pair-programmer-typescript = { path = "../opencode/agents/backend-pair-programmer.md", filename = "opencode-backend-pair-programmer-typescript", template_vars = { project = { language = "typescript" } }, tool = "opencode" }
+# Template variants for opencode-frontend-engineer (language: javascript, typescript; framework: angular, react, vue)
+opencode-frontend-engineer-javascript = { path = "../opencode/agents/frontend-engineer.md", filename = "opencode-frontend-engineer-javascript", template_vars = { project = { language = "javascript" } }, tool = "opencode" }
+opencode-frontend-engineer-javascript-angular = { path = "../opencode/agents/frontend-engineer.md", filename = "opencode-frontend-engineer-javascript-angular", template_vars = { project = { language = "javascript", framework = "angular" } }, tool = "opencode" }
+opencode-frontend-engineer-javascript-react = { path = "../opencode/agents/frontend-engineer.md", filename = "opencode-frontend-engineer-javascript-react", template_vars = { project = { language = "javascript", framework = "react" } }, tool = "opencode" }
+opencode-frontend-engineer-javascript-vue = { path = "../opencode/agents/frontend-engineer.md", filename = "opencode-frontend-engineer-javascript-vue", template_vars = { project = { language = "javascript", framework = "vue" } }, tool = "opencode" }
+opencode-frontend-engineer-typescript = { path = "../opencode/agents/frontend-engineer.md", filename = "opencode-frontend-engineer-typescript", template_vars = { project = { language = "typescript" } }, tool = "opencode" }
+opencode-frontend-engineer-typescript-angular = { path = "../opencode/agents/frontend-engineer.md", filename = "opencode-frontend-engineer-typescript-angular", template_vars = { project = { language = "typescript", framework = "angular" } }, tool = "opencode" }
+opencode-frontend-engineer-typescript-react = { path = "../opencode/agents/frontend-engineer.md", filename = "opencode-frontend-engineer-typescript-react", template_vars = { project = { language = "typescript", framework = "react" } }, tool = "opencode" }
+opencode-frontend-engineer-typescript-vue = { path = "../opencode/agents/frontend-engineer.md", filename = "opencode-frontend-engineer-typescript-vue", template_vars = { project = { language = "typescript", framework = "vue" } }, tool = "opencode" }
+# Note: Frontend engineers only support frontend languages (javascript, typescript)
+# Template variants for opencode-frontend-pair-programmer (language: javascript, typescript)
+opencode-frontend-pair-programmer-javascript = { path = "../opencode/agents/frontend-pair-programmer.md", filename = "opencode-frontend-pair-programmer-javascript", template_vars = { project = { language = "javascript" } }, tool = "opencode" }
+opencode-frontend-pair-programmer-typescript = { path = "../opencode/agents/frontend-pair-programmer.md", filename = "opencode-frontend-pair-programmer-typescript", template_vars = { project = { language = "typescript" } }, tool = "opencode" }
 opencode-general-purpose = { path = "../opencode/agents/general-purpose.md", tool = "opencode" }
-opencode-linting-advanced = { path = "../opencode/agents/linting-advanced.md", tool = "opencode" }
-opencode-linting-standard = { path = "../opencode/agents/linting-standard.md", tool = "opencode" }
+opencode-git-expert = { path = "../opencode/agents/git-expert.md", tool = "opencode" }
+opencode-github-actions-expert = { path = "../opencode/agents/github-actions-expert.md", tool = "opencode" }
+opencode-k8s-expert = { path = "../opencode/agents/k8s-expert.md", tool = "opencode" }
+# Template variants for opencode-linting-advanced (language: golang, java, javascript, python, rust, typescript)
+opencode-linting-advanced-golang = { path = "../opencode/agents/linting-advanced.md", filename = "opencode-linting-advanced-golang", template_vars = { project = { language = "golang" } }, tool = "opencode" }
+opencode-linting-advanced-java = { path = "../opencode/agents/linting-advanced.md", filename = "opencode-linting-advanced-java", template_vars = { project = { language = "java" } }, tool = "opencode" }
+opencode-linting-advanced-javascript = { path = "../opencode/agents/linting-advanced.md", filename = "opencode-linting-advanced-javascript", template_vars = { project = { language = "javascript" } }, tool = "opencode" }
+opencode-linting-advanced-python = { path = "../opencode/agents/linting-advanced.md", filename = "opencode-linting-advanced-python", template_vars = { project = { language = "python" } }, tool = "opencode" }
+opencode-linting-advanced-rust = { path = "../opencode/agents/linting-advanced.md", filename = "opencode-linting-advanced-rust", template_vars = { project = { language = "rust" } }, tool = "opencode" }
+opencode-linting-advanced-typescript = { path = "../opencode/agents/linting-advanced.md", filename = "opencode-linting-advanced-typescript", template_vars = { project = { language = "typescript" } }, tool = "opencode" }
+# Template variants for opencode-linting-standard (language: golang, java, javascript, python, rust, typescript)
+opencode-linting-standard-golang = { path = "../opencode/agents/linting-standard.md", filename = "opencode-linting-standard-golang", template_vars = { project = { language = "golang" } }, tool = "opencode" }
+opencode-linting-standard-java = { path = "../opencode/agents/linting-standard.md", filename = "opencode-linting-standard-java", template_vars = { project = { language = "java" } }, tool = "opencode" }
+opencode-linting-standard-javascript = { path = "../opencode/agents/linting-standard.md", filename = "opencode-linting-standard-javascript", template_vars = { project = { language = "javascript" } }, tool = "opencode" }
+opencode-linting-standard-python = { path = "../opencode/agents/linting-standard.md", filename = "opencode-linting-standard-python", template_vars = { project = { language = "python" } }, tool = "opencode" }
+opencode-linting-standard-rust = { path = "../opencode/agents/linting-standard.md", filename = "opencode-linting-standard-rust", template_vars = { project = { language = "rust" } }, tool = "opencode" }
+opencode-linting-standard-typescript = { path = "../opencode/agents/linting-standard.md", filename = "opencode-linting-standard-typescript", template_vars = { project = { language = "typescript" } }, tool = "opencode" }
+# Note: No framework variants for linting agents (linting is language-specific, not framework-specific)
 
 [commands]
 # Claude Code Commands
+checkpoint = { path = "../claude-code/commands/checkpoint.md" }
 commit = { path = "../claude-code/commands/commit.md" }
 gh-pr-create = { path = "../claude-code/commands/gh-pr-create.md" }
-lint = { path = "../claude-code/commands/lint.md" }
+# Template variants for lint (language: golang, java, javascript, python, rust, typescript)
+lint-golang = { path = "../claude-code/commands/lint.md", filename = "lint-golang", template_vars = { project = { language = "golang" } } }
+lint-java = { path = "../claude-code/commands/lint.md", filename = "lint-java", template_vars = { project = { language = "java" } } }
+lint-javascript = { path = "../claude-code/commands/lint.md", filename = "lint-javascript", template_vars = { project = { language = "javascript" } } }
+lint-python = { path = "../claude-code/commands/lint.md", filename = "lint-python", template_vars = { project = { language = "python" } } }
+lint-rust = { path = "../claude-code/commands/lint.md", filename = "lint-rust", template_vars = { project = { language = "rust" } } }
+lint-typescript = { path = "../claude-code/commands/lint.md", filename = "lint-typescript", template_vars = { project = { language = "typescript" } } }
 pr-self-review = { path = "../claude-code/commands/pr-self-review.md" }
+# Template variants for pr-self-review (language: golang, java, javascript, python, rust, typescript)
+pr-self-review-golang = { path = "../claude-code/commands/pr-self-review.md", filename = "pr-self-review-golang", template_vars = { project = { language = "golang" } } }
+pr-self-review-java = { path = "../claude-code/commands/pr-self-review.md", filename = "pr-self-review-java", template_vars = { project = { language = "java" } } }
+pr-self-review-javascript = { path = "../claude-code/commands/pr-self-review.md", filename = "pr-self-review-javascript", template_vars = { project = { language = "javascript" } } }
+pr-self-review-python = { path = "../claude-code/commands/pr-self-review.md", filename = "pr-self-review-python", template_vars = { project = { language = "python" } } }
+pr-self-review-rust = { path = "../claude-code/commands/pr-self-review.md", filename = "pr-self-review-rust", template_vars = { project = { language = "rust" } } }
+pr-self-review-typescript = { path = "../claude-code/commands/pr-self-review.md", filename = "pr-self-review-typescript", template_vars = { project = { language = "typescript" } } }
+# Note: No framework variants for commands (commands are typically framework-agnostic)
 review-docs = { path = "../claude-code/commands/review-docs.md" }
+squash = { path = "../claude-code/commands/squash.md" }
 update-agentic-context = { path = "../claude-code/commands/update-agentic-context.md" }
 update-docs = { path = "../claude-code/commands/update-docs.md" }
 update-docstrings = { path = "../claude-code/commands/update-docstrings.md" }
 # OpenCode Commands
+opencode-checkpoint = { path = "../opencode/commands/checkpoint.md", tool = "opencode" }
 opencode-commit = { path = "../opencode/commands/commit.md", tool = "opencode" }
 opencode-gh-pr-create = { path = "../opencode/commands/gh-pr-create.md", tool = "opencode" }
-opencode-lint = { path = "../opencode/commands/lint.md", tool = "opencode" }
+# Template variants for opencode-lint (language: golang, java, javascript, python, rust, typescript)
+opencode-lint-golang = { path = "../opencode/commands/lint.md", filename = "opencode-lint-golang", template_vars = { project = { language = "golang" } }, tool = "opencode" }
+opencode-lint-java = { path = "../opencode/commands/lint.md", filename = "opencode-lint-java", template_vars = { project = { language = "java" } }, tool = "opencode" }
+opencode-lint-javascript = { path = "../opencode/commands/lint.md", filename = "opencode-lint-javascript", template_vars = { project = { language = "javascript" } }, tool = "opencode" }
+opencode-lint-python = { path = "../opencode/commands/lint.md", filename = "opencode-lint-python", template_vars = { project = { language = "python" } }, tool = "opencode" }
+opencode-lint-rust = { path = "../opencode/commands/lint.md", filename = "opencode-lint-rust", template_vars = { project = { language = "rust" } }, tool = "opencode" }
+opencode-lint-typescript = { path = "../opencode/commands/lint.md", filename = "opencode-lint-typescript", template_vars = { project = { language = "typescript" } }, tool = "opencode" }
 opencode-pr-self-review = { path = "../opencode/commands/pr-self-review.md", tool = "opencode" }
+# Template variants for opencode-pr-self-review (language: golang, java, javascript, python, rust, typescript)
+opencode-pr-self-review-golang = { path = "../opencode/commands/pr-self-review.md", filename = "opencode-pr-self-review-golang", template_vars = { project = { language = "golang" } }, tool = "opencode" }
+opencode-pr-self-review-java = { path = "../opencode/commands/pr-self-review.md", filename = "opencode-pr-self-review-java", template_vars = { project = { language = "java" } }, tool = "opencode" }
+opencode-pr-self-review-javascript = { path = "../opencode/commands/pr-self-review.md", filename = "opencode-pr-self-review-javascript", template_vars = { project = { language = "javascript" } }, tool = "opencode" }
+opencode-pr-self-review-python = { path = "../opencode/commands/pr-self-review.md", filename = "opencode-pr-self-review-python", template_vars = { project = { language = "python" } }, tool = "opencode" }
+opencode-pr-self-review-rust = { path = "../opencode/commands/pr-self-review.md", filename = "opencode-pr-self-review-rust", template_vars = { project = { language = "rust" } }, tool = "opencode" }
+opencode-pr-self-review-typescript = { path = "../opencode/commands/pr-self-review.md", filename = "opencode-pr-self-review-typescript", template_vars = { project = { language = "typescript" } }, tool = "opencode" }
+# Note: No framework variants for commands (commands are typically framework-agnostic)
 opencode-review-docs = { path = "../opencode/commands/review-docs.md", tool = "opencode" }
+opencode-squash = { path = "../opencode/commands/squash.md", tool = "opencode" }
 opencode-update-agentic-context = { path = "../opencode/commands/update-agentic-context.md", tool = "opencode" }
 opencode-update-docs = { path = "../opencode/commands/update-docs.md", tool = "opencode" }
 opencode-update-docstrings = { path = "../opencode/commands/update-docstrings.md", tool = "opencode" }

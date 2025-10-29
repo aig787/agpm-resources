@@ -12,8 +12,6 @@ agpm.private.toml
 agpm.private.lock
 
 # AGPM managed entries - do not edit below this line
-agpm.private.toml
-agpm.private.lock
 .agpm/snippets/commands/commit.md
 .agpm/snippets/private/snippets/commands/import.md
 .agpm/snippets/private/snippets/commands/update-examples.md

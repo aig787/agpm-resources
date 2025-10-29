@@ -93,6 +93,8 @@ Prompt the user:
 **For Agents**:
 - **Question**: "What programming language or domain does this agent focus on? (e.g., python, javascript, rust, general)"
 - **Input**: Language/domain name
+- **Question**: "What type of OpenCode agent is this? (subagent, primary, or all)"
+- **Input**: Agent mode type
 
 **For Commands**:
 - **Question**: "Does this command need arguments?"
@@ -550,6 +552,17 @@ dependencies:
 ```yaml
 ---
 description: Senior Python backend engineer agent
+mode: subagent
+temperature: 0.2
+tools:
+  read: true
+  write: true
+  edit: true
+  bash: true
+  glob: true
+permission:
+  edit: allow
+  bash: ask
 agpm:
   templating: true
 dependencies:
@@ -559,6 +572,85 @@ dependencies:
       tool: agpm
 ---
 ```
+
+## OpenCode Agent Mode Types
+
+When creating OpenCode agents, specify the appropriate mode:
+
+### **subagent**
+- **Purpose**: Specialized agents that handle specific tasks
+- **Usage**: Typically invoked by other agents for specific expertise
+- **Examples**: linting-advanced, backend-engineer, git-expert
+- **Characteristics**: Focused scope, task-specific tools
+
+### **primary**
+- **Purpose**: Main agents that can handle broad workflows independently
+- **Usage**: Direct user interaction for complex multi-step tasks
+- **Examples**: project-manager, workflow-orchestrator
+- **Characteristics**: Broad scope, full tool access, can delegate to subagents
+
+### **all**
+- **Purpose**: Versatile agents that work in any context
+- **Usage**: Can function as both primary and subagent
+- **Examples**: general-purpose, research-assistant
+- **Characteristics**: Flexible scope, adaptable tool usage
+
+### **Mode Selection Guidelines:**
+- **subagent**: Use for specialized, technical agents (linting, git, security, etc.)
+- **primary**: Use for workflow management and project coordination agents
+- **all**: Use for general-purpose agents that need maximum flexibility
+
+## Temperature Guidelines for OpenCode Agents
+
+When creating OpenCode agents, use these temperature guidelines based on task type:
+
+### **Low Temperature (0.0 - 0.5)**
+**Best for tasks requiring precision, accuracy, and factual consistency:**
+- **0.0**: Completely deterministic, mechanical tasks (e.g., simple linting, formatting)
+- **0.1-0.2**: Complex technical work requiring precision (e.g., git operations, advanced linting, security analysis)
+- **0.3-0.5**: Factual QA, technical documentation, code generation
+
+**Use cases:**
+- Fact-based question answering
+- Technical documentation
+- Code generation and debugging
+- Legal/medical text processing
+- Mathematical calculations
+- **Git operations** (precise, potentially risky operations)
+- **Security analysis** (requires careful, methodical approach)
+
+### **Moderate Temperature (0.6 - 1.0)**
+**Balanced creativity and precision:**
+- **0.6-0.8**: General conversation, customer support, analysis tasks
+- **0.9-1.0**: Content creation with some creativity
+
+**Use cases:**
+- Customer support interactions
+- General conversation
+- Business writing
+- Analysis and explanation tasks
+- **Backend engineering** (implementation with some flexibility)
+- **General purpose exploration** (analysis with reasonable creativity)
+
+### **High Temperature (1.1 - 2.0+)**
+**Maximum creativity and diversity:**
+- **1.1-1.5**: Creative writing, storytelling
+- **1.6-2.0+**: Brainstorming, poetry, artistic content
+
+**Use cases:**
+- Creative writing and storytelling
+- Poetry and artistic content
+- Brainstorming and idea generation
+- Marketing copy creation
+
+### **Recommended Temperatures by Agent Type:**
+- **Linting agents**: 0.0 (standard) to 0.1 (advanced)
+- **Git experts**: 0.1 (precision is critical)
+- **Security agents**: 0.1 (methodical analysis required)
+- **Backend engineers**: 0.2 (implementation with some flexibility)
+- **General purpose**: 0.2 (balanced exploration and analysis)
+- **Creative agents**: 0.8+ (for creative tasks)
+- **Research agents**: 0.6 (analysis with some creativity)
 
 **Wrapper body example**:
 ```literal
