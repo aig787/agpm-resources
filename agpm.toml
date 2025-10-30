@@ -59,6 +59,7 @@ opencode-commit = { path = "opencode/commands/commit.md", tool = "opencode" }
 [hooks]
 # Add your hook dependencies here
 # Example: pre-commit = { source = "official", path = "hooks/pre-commit.json" }
+agpm-update = { path = "claude-code/hooks/agpm-update.json" }
 
 [mcp-servers]
 # Add your MCP server dependencies here

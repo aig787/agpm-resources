@@ -382,8 +382,8 @@ pub use crate::models::User;
 
 ### Doc Comment Format
 
-- **Use `///` for item documentation**: Functions, structs, enums, traits
-- **Use `//!` for module-level documentation**: At the top of files
+- **Use '///' for item documentation**: Functions, structs, enums, traits
+- **Use '//!' for module-level documentation**: At the top of files
 - **First line**: Brief summary (one line)
 - **Blank line** after summary if there's more content
 - **Sections**: Use standard sections like `# Examples`, `# Errors`, `# Panics`
@@ -717,7 +717,7 @@ match value {
 
 ### File Organization
 
-1. **Module documentation** (`//!` comments)
+1. **Module documentation** ('//!' comments)
 2. **Imports** (std → external → local)
 3. **Module declarations** (`mod` statements)
 4. **Type definitions** (structs, enums, type aliases)
@@ -864,7 +864,7 @@ rustfmt src/main.rs
 - **Formatting**: Use `cargo fmt`, 100-char lines, 4-space indents
 - **Naming**: `snake_case` for functions/variables, `PascalCase` for types, `SCREAMING_SNAKE_CASE` for constants
 - **Imports**: Group in std → external → local, sort alphabetically, prefer absolute imports
-- **Documentation**: Use `///` for items, `//!` for modules, include examples and error descriptions
+- **Documentation**: Use '///' for items, '//!' for modules, include examples and error descriptions
 - **Error Handling**: Use `Result<T, E>`, provide context, define custom error types
 - **Pattern Matching**: Exhaustive matching, use `if let` for single patterns
 - **Code Organization**: Logical grouping, public before private, tests in separate module

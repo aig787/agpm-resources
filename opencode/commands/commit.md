@@ -4,7 +4,7 @@ agpm:
   templating: true
 dependencies:
   snippets:
-    - name: commit_logic
+    - name: commit-base
       path: ../../snippets/commands/commit.md
       install: false
 ---
@@ -15,7 +15,7 @@ Create well-formatted git commits following project conventions.
 
 **IMPORTANT**: You are being asked to directly create git commits - analyze the changes, craft appropriate commit messages, and use the git commands to commit them. Do NOT ask for permission or confirmation.
 
-{{ agpm.deps.snippets.commit_logic.content }}
+{{ agpm.deps.snippets.commit_base.content }}
 
 ## Argument Parsing
 

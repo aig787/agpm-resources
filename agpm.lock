@@ -16,7 +16,7 @@ applied_patches = {}
 [[snippets]]
 name = "private/snippets/commands/update-examples"
 path = "private/snippets/commands/update-examples.md"
-checksum = "sha256:9479a3eeb1012421b01fb7238f36909da389df966ab6a2e974e101ad7fa3fb2b"
+checksum = "sha256:d87e9c39663927edde45ea19bb52d9416cc6b3210ea6b6e17dca06ea46d9d6bb"
 installed_at = ".agpm/snippets/private/snippets/commands/update-examples.md"
 dependencies = []
 tool = "agpm"
@@ -29,20 +29,7 @@ applied_patches = {}
 name = "snippets/commands/commit"
 path = "snippets/commands/commit.md"
 checksum = "sha256:7b698496f3321932c50a219c6f2a47d86c8f998caf995f71df09b6b33ef95b59"
-context_checksum = "sha256:eb35d24f47d19e2c6d7b0314d47810650bcf96aeb22cc455e2a7df5c99816d60"
-installed_at = ".agpm/snippets/commands/commit.md"
-dependencies = ["snippet:snippets/rules/commit-attribution"]
-tool = "agpm"
-install = false
-applied_patches = {}
-
-[snippets.variant_inputs]
-
-[[snippets]]
-name = "snippets/commands/commit"
-path = "snippets/commands/commit.md"
-checksum = "sha256:7b698496f3321932c50a219c6f2a47d86c8f998caf995f71df09b6b33ef95b59"
-context_checksum = "sha256:eb35d24f47d19e2c6d7b0314d47810650bcf96aeb22cc455e2a7df5c99816d60"
+context_checksum = "sha256:66b45d0af0123ea06fedbf4a8d3573bdddef7d37051c4ef70f45a0407eee2dbf"
 installed_at = ".claude/snippets/commands/commit.md"
 dependencies = ["snippet:snippets/rules/commit-attribution"]
 tool = "claude-code"
@@ -52,12 +39,13 @@ applied_patches = {}
 [snippets.variant_inputs]
 
 [[snippets]]
-name = "snippets/rules/commit-attribution"
-path = "snippets/rules/commit-attribution.md"
-checksum = "sha256:04bab2d3b251a4f297da7aaab00848fd5117a629e0f42d593231f18ae7ac7486"
-installed_at = ".agpm/snippets/rules/commit-attribution.md"
-dependencies = []
-tool = "agpm"
+name = "snippets/commands/commit"
+path = "snippets/commands/commit.md"
+checksum = "sha256:7b698496f3321932c50a219c6f2a47d86c8f998caf995f71df09b6b33ef95b59"
+context_checksum = "sha256:ffd1c26639f8848c889732cf1c19bd0faf77fcb19f3eac1a2dace9ed4951f66b"
+installed_at = ".opencode/snippet/snippets/commands/commit.md"
+dependencies = ["snippet:snippets/rules/commit-attribution"]
+tool = "opencode"
 install = false
 applied_patches = {}
 
@@ -75,11 +63,23 @@ applied_patches = {}
 
 [snippets.variant_inputs]
 
+[[snippets]]
+name = "snippets/rules/commit-attribution"
+path = "snippets/rules/commit-attribution.md"
+checksum = "sha256:04bab2d3b251a4f297da7aaab00848fd5117a629e0f42d593231f18ae7ac7486"
+installed_at = ".opencode/snippet/snippets/rules/commit-attribution.md"
+dependencies = []
+tool = "opencode"
+install = false
+applied_patches = {}
+
+[snippets.variant_inputs]
+
 [[commands]]
 name = "claude-code/commands/commit"
 path = "claude-code/commands/commit.md"
-checksum = "sha256:c045185b368409751d6a9bf393c16064ab92ec2d968dc0002e45696106d68ca3"
-context_checksum = "sha256:37ad429e8c622459cdd2a27a370ce55f7a68c570fddf2c2d837ee455c6e54545"
+checksum = "sha256:75bb106d794ebd67bf4313d555b5d2c82fde2b0882836320a4269fb78916de85"
+context_checksum = "sha256:73bd37209f4cc71dd0f80cc30fce3b8f841bb7b2d0361dea4c536b7a9238f6f7"
 installed_at = ".claude/commands/commit.md"
 dependencies = ["snippet:snippets/commands/commit"]
 tool = "claude-code"
@@ -91,8 +91,8 @@ applied_patches = {}
 [[commands]]
 name = "opencode/commands/commit"
 path = "opencode/commands/commit.md"
-checksum = "sha256:1ad728887be01368d8b61a6680ac33bb847ae4e994656279581fbaca9d4ac24e"
-context_checksum = "sha256:13f560585ac8273b78e15576df4681287983de88609a2c0441b7cfe98a54cf08"
+checksum = "sha256:27cec57438cb27be44c6f89dab359324fcce3a7cd2559fa6db2b19e84fb2aa5d"
+context_checksum = "sha256:513d2d00e5d0743063174cac30f8f07a6295696e3f0bde98d5bce1a844e8e2a9"
 installed_at = ".opencode/command/commit.md"
 dependencies = ["snippet:snippets/commands/commit"]
 tool = "opencode"
@@ -104,7 +104,7 @@ applied_patches = {}
 [[commands]]
 name = "private/claude-code/commands/import"
 path = "private/claude-code/commands/import.md"
-checksum = "sha256:6e6a5f8eed610fe7c953eb53ada5af69cfc20857b1b4f5307f886f89993d7200"
+checksum = "sha256:f49081e57b685807036f053819fa2c3edc3ec911405af8fa806cc36e60017593"
 context_checksum = "sha256:8e5ff46c5edf1c707a86358527843ee4ab522164b8673d020b121b9be964f92e"
 installed_at = ".claude/commands/import.md"
 dependencies = ["snippet:private/snippets/commands/import"]
@@ -117,8 +117,8 @@ applied_patches = {}
 [[commands]]
 name = "private/claude-code/commands/update-examples"
 path = "private/claude-code/commands/update-examples.md"
-checksum = "sha256:13f2fe94f6d475f771d7fa6b3eb8e5b07f1d3f2d88559374ecd1d9a32e0ae226"
-context_checksum = "sha256:a574012ff5f244bf2a7473367e911e9443d271ae4a1587789b244dd158bf550b"
+checksum = "sha256:8295aa452a8ca6cf1fdd6aa3478f11f385632f344b4abfb534e9c6f1967f4475"
+context_checksum = "sha256:0c5482e99f103f017662ab1b105d86a6b03c5c7a3e8111484bf448325aebef90"
 installed_at = ".claude/commands/update-examples.md"
 dependencies = ["snippet:private/snippets/commands/update-examples"]
 tool = "claude-code"
@@ -130,7 +130,7 @@ applied_patches = {}
 [[commands]]
 name = "private/opencode/commands/import"
 path = "private/opencode/commands/import.md"
-checksum = "sha256:76c2453f5e9ac155695d04b8efe87a9ff2dfc5f52d98f4dd134ad585b36035c5"
+checksum = "sha256:270313cb6ad4ab750368b79d090709f92c463d59b8398d446bd69dbc49e35b29"
 context_checksum = "sha256:86392bae4d7915c4639b55820e1d2d7ecc05b7a3cf1764d74b3b2334ef84c505"
 installed_at = ".opencode/command/import.md"
 dependencies = ["snippet:private/snippets/commands/import"]
@@ -143,8 +143,8 @@ applied_patches = {}
 [[commands]]
 name = "private/opencode/commands/update-examples"
 path = "private/opencode/commands/update-examples.md"
-checksum = "sha256:70e51225930e2df75aa90a9b9d443db177de6a083581d0cd3a6060c9b750dd99"
-context_checksum = "sha256:f8a48f4320b48893ff2f3687cb19a21b63792c485c7c3d3e61a9face8badbadd"
+checksum = "sha256:201e03a20fbc4e7c03637c31cf00c2c946ddbffbde0c93622aa961d5221634cd"
+context_checksum = "sha256:cccfbed00bf3297041815d126a4eb06d5f94e941d064f439b181934830a90365"
 installed_at = ".opencode/command/update-examples.md"
 dependencies = ["snippet:private/snippets/commands/update-examples"]
 tool = "opencode"
@@ -152,3 +152,15 @@ manifest_alias = "opencode-examples"
 applied_patches = {}
 
 [commands.variant_inputs]
+
+[[hooks]]
+name = "claude-code/hooks/agpm-update"
+path = "claude-code/hooks/agpm-update.json"
+checksum = ""
+installed_at = ".claude/settings.local.json"
+dependencies = []
+tool = "claude-code"
+manifest_alias = "agpm-update"
+applied_patches = {}
+
+[hooks.variant_inputs]
