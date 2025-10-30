@@ -17,7 +17,7 @@ dependencies:
   snippets:
     - name: github-actions-expert-base
       path: ../../snippets/agents/github-actions-expert.md
-      tool: agpm
+      install: false
 ---
 
 {{ agpm.deps.snippets.github_actions_expert_base.content }}

@@ -17,7 +17,7 @@ agpm:
     snippets:
       - name: kubernetes-expert-base
         path: ../../snippets/agents/kubernetes-expert.md
-        tool: agpm
+        install: false
 ---
 
 {{ agpm.deps.snippets.kubernetes_expert_base.content }}
