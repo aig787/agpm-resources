@@ -8,7 +8,6 @@ checksum = "sha256:f76f286623e6c2ac6ea07ac2852dfdc01c886a83521ac9103f75b91733ab9
 installed_at = ".agpm/snippets/private/snippets/commands/import.md"
 dependencies = []
 tool = "agpm"
-install = true
 applied_patches = {}
 
 [snippets.variant_inputs]
@@ -20,7 +19,6 @@ checksum = "sha256:d87e9c39663927edde45ea19bb52d9416cc6b3210ea6b6e17dca06ea46d9d
 installed_at = ".agpm/snippets/private/snippets/commands/update-examples.md"
 dependencies = []
 tool = "agpm"
-install = true
 applied_patches = {}
 
 [snippets.variant_inputs]
@@ -78,7 +76,7 @@ applied_patches = {}
 [[commands]]
 name = "claude-code/commands/commit"
 path = "claude-code/commands/commit.md"
-checksum = "sha256:75bb106d794ebd67bf4313d555b5d2c82fde2b0882836320a4269fb78916de85"
+checksum = "sha256:c045185b368409751d6a9bf393c16064ab92ec2d968dc0002e45696106d68ca3"
 context_checksum = "sha256:73bd37209f4cc71dd0f80cc30fce3b8f841bb7b2d0361dea4c536b7a9238f6f7"
 installed_at = ".claude/commands/commit.md"
 dependencies = ["snippet:snippets/commands/commit"]
@@ -91,7 +89,7 @@ applied_patches = {}
 [[commands]]
 name = "opencode/commands/commit"
 path = "opencode/commands/commit.md"
-checksum = "sha256:27cec57438cb27be44c6f89dab359324fcce3a7cd2559fa6db2b19e84fb2aa5d"
+checksum = "sha256:ecc4acbdbcacda644790528b9fc3b89396c74803d0bbafa70772bb1293d51b01"
 context_checksum = "sha256:513d2d00e5d0743063174cac30f8f07a6295696e3f0bde98d5bce1a844e8e2a9"
 installed_at = ".opencode/command/commit.md"
 dependencies = ["snippet:snippets/commands/commit"]
@@ -104,8 +102,8 @@ applied_patches = {}
 [[commands]]
 name = "private/claude-code/commands/import"
 path = "private/claude-code/commands/import.md"
-checksum = "sha256:f49081e57b685807036f053819fa2c3edc3ec911405af8fa806cc36e60017593"
-context_checksum = "sha256:8e5ff46c5edf1c707a86358527843ee4ab522164b8673d020b121b9be964f92e"
+checksum = "sha256:6e6a5f8eed610fe7c953eb53ada5af69cfc20857b1b4f5307f886f89993d7200"
+context_checksum = "sha256:1f63ad88b8d1842e741b654f83b5143eba08cf4a05cd0363d1c20f362ba25994"
 installed_at = ".claude/commands/import.md"
 dependencies = ["snippet:private/snippets/commands/import"]
 tool = "claude-code"
@@ -117,8 +115,8 @@ applied_patches = {}
 [[commands]]
 name = "private/claude-code/commands/update-examples"
 path = "private/claude-code/commands/update-examples.md"
-checksum = "sha256:8295aa452a8ca6cf1fdd6aa3478f11f385632f344b4abfb534e9c6f1967f4475"
-context_checksum = "sha256:0c5482e99f103f017662ab1b105d86a6b03c5c7a3e8111484bf448325aebef90"
+checksum = "sha256:2a85ed015297f456fa946d697895a2fe4199c59ad9281f6f0a4e35e34b19f7b3"
+context_checksum = "sha256:2b8c55ec89988dac09515df7f5bb833fdf710ccb7ab7381ad80ec986346db5a9"
 installed_at = ".claude/commands/update-examples.md"
 dependencies = ["snippet:private/snippets/commands/update-examples"]
 tool = "claude-code"
@@ -130,8 +128,8 @@ applied_patches = {}
 [[commands]]
 name = "private/opencode/commands/import"
 path = "private/opencode/commands/import.md"
-checksum = "sha256:270313cb6ad4ab750368b79d090709f92c463d59b8398d446bd69dbc49e35b29"
-context_checksum = "sha256:86392bae4d7915c4639b55820e1d2d7ecc05b7a3cf1764d74b3b2334ef84c505"
+checksum = "sha256:76c2453f5e9ac155695d04b8efe87a9ff2dfc5f52d98f4dd134ad585b36035c5"
+context_checksum = "sha256:668f89236f52d5f1e11226a9324e8d148791c09fea0771d6492b80922695c66d"
 installed_at = ".opencode/command/import.md"
 dependencies = ["snippet:private/snippets/commands/import"]
 tool = "opencode"
@@ -143,8 +141,8 @@ applied_patches = {}
 [[commands]]
 name = "private/opencode/commands/update-examples"
 path = "private/opencode/commands/update-examples.md"
-checksum = "sha256:201e03a20fbc4e7c03637c31cf00c2c946ddbffbde0c93622aa961d5221634cd"
-context_checksum = "sha256:cccfbed00bf3297041815d126a4eb06d5f94e941d064f439b181934830a90365"
+checksum = "sha256:5c10d8745ee72d06bdd7fc478c717693ada97c4902a4b46b07b309b5646d439b"
+context_checksum = "sha256:bb9a41d49f0d8251f5fb81fe9e83626cc433171757106e105e5d7b9051d88f5e"
 installed_at = ".opencode/command/update-examples.md"
 dependencies = ["snippet:private/snippets/commands/update-examples"]
 tool = "opencode"

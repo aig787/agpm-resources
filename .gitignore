@@ -20,4 +20,6 @@ agpm.private.lock
 .opencode/command/commit.md
 .opencode/command/import.md
 .opencode/command/update-examples.md
+agpm.private.lock
+agpm.private.toml
 # End of AGPM managed entries

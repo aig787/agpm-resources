@@ -15,7 +15,6 @@ Create well-formatted git commits following project conventions.
 
 **IMPORTANT**: You are being asked to directly create git commits - analyze the changes, craft appropriate commit messages, and use the git commands to commit them. Do NOT ask for permission or confirmation.
 
-{{ agpm.deps.snippets.commit_base.content }}
 
 ## Argument Parsing
 
@@ -57,6 +56,8 @@ Based on the parsed arguments, execute the appropriate commit strategy:
 - `--multi` or `--multi=N`: Create multiple logically grouped commits
 - No flags: Create a single commit with all changes
 - `--dry-run`: Show what would be committed without actually committing
+
+{{ agpm.deps.snippets.commit_base.content }}
 
 ## Tool-Specific Notes
 
