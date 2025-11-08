@@ -1,3 +1,8 @@
+---
+agpm:
+  version: "1.0.0"
+---
+
 # Rust Style Guide
 
 This document defines the code style standards for Rust projects. It covers formatting, naming conventions, imports, documentation style, and code organization.

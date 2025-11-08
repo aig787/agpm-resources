@@ -2,6 +2,7 @@
 name: checkpoint
 description: Git-based checkpoint system for preserving development state without polluting branch history
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -9,7 +10,6 @@ dependencies:
       path: ../../snippets/commands/checkpoint.md
       install: false
 ---
-
 {{ agpm.deps.snippets.checkpoint_base.content }}
 
 ## Tool-Specific Notes

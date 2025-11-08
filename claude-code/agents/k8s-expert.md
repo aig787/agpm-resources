@@ -2,6 +2,7 @@
 name: k8s-expert
 description: Kubernetes expert with comprehensive knowledge of container orchestration, cluster management, and cloud-native ecosystem technologies
 agpm:
+  version: "1.0.0"
   templating: true
   dependencies:
     snippets:
@@ -9,7 +10,6 @@ agpm:
         path: ../../snippets/agents/kubernetes-expert.md
         install: false
 ---
-
 {{ agpm.deps.snippets.kubernetes_expert_base.content }}
 
 ## Tool-Specific Notes

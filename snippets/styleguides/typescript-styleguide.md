@@ -1,3 +1,8 @@
+---
+agpm:
+  version: "1.0.0"
+---
+
 # TypeScript Style Guide
 
 This document defines the code style standards for TypeScript projects. It covers formatting, naming conventions, type annotations, imports, and documentation style.

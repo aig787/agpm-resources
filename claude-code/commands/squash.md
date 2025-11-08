@@ -2,6 +2,7 @@
 name: squash
 description: Squash commits between specified range into a single commit, with optional intelligent regrouping, or restore from a previous squash operation
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -9,7 +10,6 @@ dependencies:
       path: ../../snippets/commands/squash.md
       install: false
 ---
-
 {{ agpm.deps.snippets.squash_base.content }}
 
 ## Tool-Specific Notes

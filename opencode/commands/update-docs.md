@@ -1,6 +1,7 @@
 ---
 description: Review changes and update README.md to stay current with implementation
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -8,7 +9,6 @@ dependencies:
       path: ../../snippets/commands/update-docs.md
       install: false
 ---
-
 ## Your task
 
 Review recent changes and ensure README.md and all documentation files accurately reflect the project's current state.

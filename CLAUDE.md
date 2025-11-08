@@ -333,6 +333,268 @@ dependencies:
 {{ agpm.deps.snippets.styleguide.content }}
 ```
 
+## Artifact Versioning and Tagging
+
+This repository uses **semantic versioning** and **automated Git tagging** to track artifact versions and enable reproducible installations.
+
+### Version Management Overview
+
+**Key Concepts**:
+1. **Individual artifact versioning**: Each artifact (agent, command, snippet) has its own independent version
+2. **Semantic versioning**: Version format follows `v{major}.{minor}.{patch}` (e.g., `v1.2.3`)
+3. **Git tags**: Each artifact version is tagged in Git for traceability
+4. **Automated tagging**: GitHub Actions automatically creates tags when artifacts are updated
+5. **Frontmatter tracking**: Version is stored in each artifact's YAML frontmatter
+
+### Tag Naming Convention
+
+**Format**: `{tool}-{category}-{artifact-name}-v{semver}`
+
+**Examples**:
+- `snippet-agent-backend-engineer-v1.0.0`
+- `claude-code-agent-backend-engineer-v1.2.3`
+- `opencode-command-commit-v2.1.0`
+- `snippet-best-practices-python-v1.5.2`
+
+**Component Breakdown**:
+- `{tool}`: `snippet`, `claude-code`, or `opencode`
+- `{category}`: `agent`, `command`, `best-practices`, `styleguide`, `framework`, or `rule`
+- `{artifact-name}`: Kebab-case name (e.g., `backend-engineer`, `commit`)
+- `{semver}`: Semantic version with `v` prefix (e.g., `v1.2.3`)
+
+### Semantic Versioning Rules
+
+**Major (X.0.0)** - Breaking changes:
+- Changed agent/command interface or arguments
+- Removed features or capabilities
+- Modified dependencies that break compatibility
+- Restructured frontmatter in breaking ways
+
+**Minor (x.Y.0)** - New features (backward compatible):
+- Added new functionality
+- Enhanced existing features
+- Added new optional parameters
+- Improved documentation significantly
+
+**Patch (x.y.Z)** - Bug fixes:
+- Fixed bugs or errors
+- Minor documentation updates
+- Performance improvements
+- Typo corrections
+
+### Version in Frontmatter
+
+**Every artifact should include a version field** in the `agpm` section of its YAML frontmatter:
+
+```yaml
+---
+name: backend-engineer
+description: Python backend development expert
+agpm:
+  version: "1.0.0"
+  templating: true
+dependencies:
+  snippets:
+    - name: backend-engineer-base
+      path: ../../../snippets/agents/backend-engineer.md
+      tool: agpm
+---
+```
+
+**Important Notes**:
+- Version is stored WITHOUT the `v` prefix (e.g., `"1.0.0"`, not `"v1.0.0"`)
+- Version must be quoted as a string
+- Version is nested under the `agpm` section
+- If no version is present, the bootstrap script will add `"1.0.0"`
+
+### Automated Tagging Workflow
+
+The repository includes a GitHub Actions workflow (`.github/workflows/tag-artifacts.yml`) that automatically:
+
+1. **Detects changed artifacts** when code is pushed to `main`
+2. **Analyzes commit messages** to determine version bump type
+3. **Updates version** in artifact frontmatter
+4. **Creates Git tags** for changed artifacts
+5. **Pushes tags** to the repository
+6. **Generates summary** of created tags
+
+**Commit Message Conventions**:
+
+To control version bumping, use conventional commit messages:
+
+```bash
+# Major version bump (breaking change)
+git commit -m "feat!: redesign backend-engineer agent interface"
+git commit -m "BREAKING CHANGE: remove deprecated command flags"
+
+# Minor version bump (new feature)
+git commit -m "feat: add type checking to lint command"
+git commit -m "feat(agent): enhance error handling in backend-engineer"
+
+# Patch version bump (bug fix, default)
+git commit -m "fix: correct path reference in commit command"
+git commit -m "docs: update backend-engineer usage examples"
+git commit -m "chore: improve formatting in lint-config"
+```
+
+**Manual Workflow Dispatch**:
+
+You can also trigger tagging manually:
+
+```bash
+# Via GitHub UI: Actions → Tag Artifacts → Run workflow
+# Choose options:
+# - dry_run: true/false (test without creating tags)
+# - force_version_bump: auto/major/minor/patch
+```
+
+### Dependency Version Constraints
+
+When declaring dependencies, you can specify version constraints using semantic versioning ranges:
+
+```yaml
+dependencies:
+  snippets:
+    - name: backend-engineer-base
+      path: ../../../snippets/agents/backend-engineer.md
+      version: "^1.0.0"  # Compatible with 1.x.x (>= 1.0.0, < 2.0.0)
+      tool: agpm
+```
+
+**Version Range Syntax**:
+- `"1.0.0"` - Exact version
+- `"^1.0.0"` - Compatible with 1.x.x (default for most cases)
+- `"~1.2.0"` - Compatible with 1.2.x
+- `">=1.0.0"` - Any version >= 1.0.0
+- `">=1.0.0 <2.0.0"` - Version range
+
+### Bootstrap Initial Versions
+
+To add initial versions to all existing artifacts, use the bootstrap script:
+
+```bash
+# Dry-run (preview changes without modifying files)
+python .github/scripts/bootstrap-versions.py --dry-run
+
+# Apply initial versions (default: 1.0.0)
+python .github/scripts/bootstrap-versions.py
+
+# Apply with custom default version
+python .github/scripts/bootstrap-versions.py --default-version 0.1.0
+
+# Create tags for initial versions
+python .github/scripts/bootstrap-versions.py --output initial-tags.txt
+bash .github/scripts/create-tags.sh initial-tags.txt
+```
+
+**What the bootstrap script does**:
+1. Finds all artifact files (*.md) in `snippets/`, `claude-code/`, `opencode/`
+2. Parses YAML frontmatter from each file
+3. Adds `agpm.version` field if not present (default: `"1.0.0"`)
+4. Generates git tag names for all artifacts
+5. Outputs tag list to file for tag creation
+
+### Manual Version Management
+
+**Updating a version manually**:
+
+1. Edit the artifact file
+2. Update the version in frontmatter:
+   ```yaml
+   agpm:
+     version: "1.2.0"  # Increment as needed
+   ```
+3. Commit with appropriate conventional commit message
+4. Push to trigger automated tagging
+
+**Creating tags manually**:
+
+```bash
+# Using the create-tags script
+echo "snippet-agent-backend-engineer-v1.2.0" > tags.txt
+bash .github/scripts/create-tags.sh tags.txt
+
+# Or directly with git
+git tag -a snippet-agent-backend-engineer-v1.2.0 \
+  -m "Release snippet/agent/backend-engineer v1.2.0"
+git push origin snippet-agent-backend-engineer-v1.2.0
+```
+
+### Version Tracking Tools
+
+**Scripts in `.github/scripts/`**:
+
+1. **`bump-version.py`** - Analyzes changed files, increments versions, updates frontmatter
+   ```bash
+   python .github/scripts/bump-version.py \
+     --changed-files changed.txt \
+     --bump-type minor \
+     --output tags.txt
+   ```
+
+2. **`create-tags.sh`** - Creates annotated Git tags and pushes to repository
+   ```bash
+   bash .github/scripts/create-tags.sh tags.txt
+   ```
+
+3. **`bootstrap-versions.py`** - Adds initial versions to all artifacts
+   ```bash
+   python .github/scripts/bootstrap-versions.py --dry-run
+   ```
+
+### Using Versioned Artifacts
+
+**In AGPM configuration** (`agpm.toml`):
+
+```toml
+[snippets]
+backend-engineer = {
+  source = "github",
+  repo = "your-org/agpm-resources",
+  path = "snippets/agents/backend-engineer.md",
+  version = "^1.0.0",  # Use version constraint
+  tag = "snippet-agent-backend-engineer-v1.0.0"  # Or specific tag
+}
+```
+
+**Benefits of versioned artifacts**:
+1. **Reproducible installations**: Pin to specific versions for stability
+2. **Safe upgrades**: Test new versions before upgrading
+3. **Rollback capability**: Revert to previous versions if needed
+4. **Dependency tracking**: Ensure compatible versions across artifacts
+5. **Change history**: Track evolution of artifacts over time
+
+### Version Compatibility Matrix
+
+When upgrading artifacts, consider compatibility between:
+
+| Artifact Type | Depends On | Compatibility Notes |
+|--------------|------------|---------------------|
+| Claude Code Agent | Snippet Agent | Should match major version |
+| OpenCode Agent | Snippet Agent | Should match major version |
+| Claude Code Command | Snippet Command | Should match major version |
+| OpenCode Command | Snippet Command | Should match major version |
+| Agent | Best Practices | Minor versions acceptable |
+| Agent | Style Guide | Minor versions acceptable |
+| Command | Configuration | Must be compatible |
+
+**Example Compatibility**:
+- `snippet-agent-backend-engineer-v2.0.0` with `claude-code-agent-backend-engineer-v2.1.0` ✅
+- `snippet-agent-backend-engineer-v2.0.0` with `claude-code-agent-backend-engineer-v1.9.0` ❌
+
+### Best Practices for Versioning
+
+1. **Always increment versions** when making changes to artifacts
+2. **Use conventional commits** to trigger appropriate version bumps
+3. **Test before merging** to ensure changes don't break dependents
+4. **Document breaking changes** in commit messages and release notes
+5. **Pin versions** for production use, use ranges for development
+6. **Review dependency versions** when upgrading artifacts
+7. **Keep wrappers in sync** with snippet versions (same major version)
+8. **Tag releases** before announcing new features
+9. **Maintain changelog** for significant version changes
+10. **Use semantic versioning strictly** for predictability
+
 ## Creating Agents
 
 ### Snippet Structure (Tool-Agnostic)

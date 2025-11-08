@@ -1,6 +1,7 @@
 ---
 description: Create GitHub pull requests with automatic title and description generation
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -8,7 +9,6 @@ dependencies:
       path: ../../snippets/commands/gh-pr-create.md
       install: false
 ---
-
 {{ agpm.deps.snippets.gh_pr_create_base.content }}
 
 ## Tool-Specific Notes

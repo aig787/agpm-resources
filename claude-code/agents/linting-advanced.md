@@ -5,6 +5,7 @@ description: |
 model: sonnet
 color: orange
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -12,7 +13,6 @@ dependencies:
       path: ../../snippets/agents/linting-advanced.md
       install: false
 ---
-
 {{ agpm.deps.snippets.linting_advanced_base.content }}
 
 ## Tool-Specific Notes

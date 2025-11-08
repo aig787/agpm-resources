@@ -1,8 +1,8 @@
 ---
 agpm:
+  version: "1.0.0"
   templating: true
 ---
-
 You are working with React, a popular JavaScript library for building user interfaces. Follow these React-specific best practices and patterns.
 
 ## Core React Principles

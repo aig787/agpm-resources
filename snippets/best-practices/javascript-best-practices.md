@@ -1,3 +1,8 @@
+---
+agpm:
+  version: "1.0.0"
+---
+
 # JavaScript Best Practices
 
 This document defines technical best practices for JavaScript development, covering tools, patterns, testing, security, and performance optimization.

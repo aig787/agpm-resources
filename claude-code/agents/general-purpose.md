@@ -4,6 +4,7 @@ description: Use this agent for codebase exploration, architectural review, and 
 color: blue
 model: sonnet
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -11,7 +12,6 @@ dependencies:
       path: ../../snippets/agents/general-purpose.md
       install: false
 ---
-
 {{ agpm.deps.snippets.general_purpose_base.content }}
 
 ## Tool-Specific Notes

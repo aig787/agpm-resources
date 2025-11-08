@@ -1,3 +1,8 @@
+---
+agpm:
+  version: "1.0.0"
+---
+
 # Python Style Guide
 
 This document defines the code style standards for Python projects. It covers formatting, naming conventions, type hints, imports, and documentation style.

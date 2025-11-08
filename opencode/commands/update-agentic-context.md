@@ -1,6 +1,7 @@
 ---
 description: Review changes and update CLAUDE.md and/or AGENTS.md to reflect current architecture
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -15,7 +16,6 @@ dependencies:
       path: ../agents/general-purpose.md
       tool: opencode
 ---
-
 ## Your task
 
 Review code changes and update AI context files (CLAUDE.md, AGENTS.md) to reflect current architecture and implementation.

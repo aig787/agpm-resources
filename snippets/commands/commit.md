@@ -1,5 +1,6 @@
 ---
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:

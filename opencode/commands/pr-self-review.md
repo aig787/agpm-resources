@@ -1,6 +1,7 @@
 ---
 description: Perform comprehensive PR self-review with language-specific checks
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -8,7 +9,6 @@ dependencies:
       path: ../../snippets/commands/pr-self-review.md
       install: false
 ---
-
 ## Your task
 
 Perform a comprehensive pull request self-review based on the arguments provided.

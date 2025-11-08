@@ -1,5 +1,6 @@
 ---
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -7,7 +8,6 @@ dependencies:
       path: ../styleguides/{{ agpm.project.language }}-styleguide.md
       install: false
 ---
-
 ## Your task
 
 Run code quality checks for the project based on the language-specific style guide.

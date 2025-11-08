@@ -1,5 +1,6 @@
 ---
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -10,7 +11,6 @@ dependencies:
       path: ../best-practices/{{ agpm.project.language }}-best-practices.md
       install: false
 ---
-
 # Pull Request Self-Review Command
 
 ## Overview

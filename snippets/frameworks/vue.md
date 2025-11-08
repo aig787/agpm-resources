@@ -1,8 +1,8 @@
 ---
 agpm:
+  version: "1.0.0"
   templating: false
 ---
-
 You are working with Vue.js, a progressive JavaScript framework for building user interfaces. Follow these Vue-specific best practices and patterns.
 
 ## Core Vue Principles

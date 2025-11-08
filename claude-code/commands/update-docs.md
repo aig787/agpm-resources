@@ -3,6 +3,7 @@ allowed-tools: Bash(git diff:*), Bash(git status:*), Bash(git log:*), Read, Edit
 description: Review changes and update README.md to stay current with implementation
 argument-hint: '[ --check-only | --auto-update ] - e.g., "--check-only" to only report needed updates'
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -10,7 +11,6 @@ dependencies:
       path: ../../snippets/commands/update-docs.md
       install: false
 ---
-
 {{ agpm.deps.snippets.update_docs_command.content }}
 
 ## Context

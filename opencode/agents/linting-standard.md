@@ -12,6 +12,7 @@ permission:
   edit: allow
   bash: allow
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -19,7 +20,6 @@ dependencies:
       path: ../../snippets/agents/linting-standard.md
       install: false
 ---
-
 {{ agpm.deps.snippets.linting_standard_base.content }}
 
 **Additional tool-specific context**:

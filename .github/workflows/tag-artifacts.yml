@@ -1,0 +1,179 @@
+name: Tag Artifacts on Version Changes
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'snippets/**/*.md'
+      - 'claude-code/**/*.md'
+      - 'opencode/**/*.md'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run in dry-run mode (no tags created)'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      force_version_bump:
+        description: 'Force specific version bump type'
+        required: false
+        default: 'auto'
+        type: choice
+        options:
+          - 'auto'
+          - 'major'
+          - 'minor'
+          - 'patch'
+
+permissions:
+  contents: write
+
+jobs:
+  tag-changed-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for git diff
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Detect changed artifacts
+        id: detect
+        run: |
+          # Get changed files from the last commit
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            # For manual runs, check last commit
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+          else
+            # For push events, use the commit range
+            CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          fi
+
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          # Filter for artifact files
+          ARTIFACTS=$(echo "$CHANGED_FILES" | grep -E '^(snippets|claude-code|opencode)/.*\.md$' || true)
+
+          if [ -z "$ARTIFACTS" ]; then
+            echo "No artifact files changed"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changed artifacts:"
+            echo "$ARTIFACTS"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            # Save to file for next step
+            echo "$ARTIFACTS" > changed_artifacts.txt
+          fi
+
+      - name: Analyze commits for version bump type
+        id: analyze
+        if: steps.detect.outputs.has_changes == 'true'
+        run: |
+          # Get commit messages from the push
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+
+          echo "Analyzing commit message:"
+          echo "$COMMIT_MSG"
+
+          # Determine version bump type
+          BUMP_TYPE="${{ github.event.inputs.force_version_bump }}"
+
+          if [ "$BUMP_TYPE" = "" ] || [ "$BUMP_TYPE" = "auto" ]; then
+            # Auto-detect from commit message (conventional commits)
+            if echo "$COMMIT_MSG" | grep -qiE '^(BREAKING CHANGE:|feat!:|fix!:)'; then
+              BUMP_TYPE="major"
+            elif echo "$COMMIT_MSG" | grep -qiE '^feat(\(.+\))?:'; then
+              BUMP_TYPE="minor"
+            else
+              BUMP_TYPE="patch"
+            fi
+          fi
+
+          echo "Version bump type: $BUMP_TYPE"
+          echo "bump_type=$BUMP_TYPE" >> $GITHUB_OUTPUT
+
+      - name: Bump versions and update frontmatter
+        id: bump
+        if: steps.detect.outputs.has_changes == 'true'
+        run: |
+          DRY_RUN="${{ github.event.inputs.dry_run }}"
+          if [ "$DRY_RUN" = "" ]; then
+            DRY_RUN="false"
+          fi
+
+          python .github/scripts/bump-version.py \
+            --changed-files changed_artifacts.txt \
+            --bump-type ${{ steps.analyze.outputs.bump_type }} \
+            --dry-run $DRY_RUN \
+            --output tags.txt
+
+      - name: Commit version updates
+        if: steps.detect.outputs.has_changes == 'true' && github.event.inputs.dry_run != 'true'
+        run: |
+          # Check if there are changes to commit
+          if git diff --quiet; then
+            echo "No version changes to commit"
+          else
+            git add .
+            git commit -m "chore: bump artifact versions [skip ci]"
+            git push origin main
+          fi
+
+      - name: Create and push tags
+        if: steps.detect.outputs.has_changes == 'true' && github.event.inputs.dry_run != 'true'
+        run: |
+          if [ ! -f tags.txt ]; then
+            echo "No tags to create"
+            exit 0
+          fi
+
+          bash .github/scripts/create-tags.sh tags.txt
+
+      - name: Generate summary
+        if: steps.detect.outputs.has_changes == 'true'
+        run: |
+          echo "## Artifact Tagging Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version bump type**: ${{ steps.analyze.outputs.bump_type }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ -f tags.txt ]; then
+            echo "### Created Tags" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+            cat tags.txt >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Note**: Dry-run mode - no tags were actually created" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: No changes detected
+        if: steps.detect.outputs.has_changes == 'false'
+        run: |
+          echo "## Artifact Tagging Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "No artifact files were modified in this push." >> $GITHUB_STEP_SUMMARY

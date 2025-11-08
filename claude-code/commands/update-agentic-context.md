@@ -3,6 +3,7 @@ allowed-tools: Bash(git diff:*), Bash(git status:*), Bash(git log:*), Bash(wc:*)
 description: Review changes and update CLAUDE.md and/or AGENTS.md to reflect current architecture
 argument-hint: '[ --check-only | --auto-update ] - e.g., "--check-only" to only report needed updates'
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -17,7 +18,6 @@ dependencies:
       path: ../agents/general-purpose.md
       tool: claude-code
 ---
-
 {{ agpm.deps.snippets.update_agentic_context_logic.content }}
 
 ## Context

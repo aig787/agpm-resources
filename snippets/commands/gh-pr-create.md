@@ -1,3 +1,8 @@
+---
+agpm:
+  version: "1.0.0"
+---
+
 # GitHub PR Create Command
 
 ## Purpose

@@ -3,6 +3,7 @@ allowed-tools: "Bash(git diff:*), Bash(git status:*), Bash(git log:*), Task, Gre
 description: Perform comprehensive PR self-review with language-specific checks
 argument-hint: "[ --quick | --full | --security | --performance ] - e.g., \"--quick\" for basic checks only"
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -10,7 +11,6 @@ dependencies:
       path: ../../snippets/commands/pr-self-review.md
       install: false
 ---
-
 {{ agpm.deps.snippets.pr_self_review_base.content }}
 
 ## Context

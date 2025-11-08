@@ -3,6 +3,7 @@ allowed-tools: Bash(git diff:*), Bash(git status:*), Bash(git log:*), Read, Edit
 description: Review and update all documentation files in docs/ directory for accuracy
 argument-hint: '[ --check-only | --auto-update ] - e.g., "--check-only" to only report needed updates'
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -10,7 +11,6 @@ dependencies:
       path: ../../snippets/commands/review-docs.md
       install: false
 ---
-
 {{ agpm.deps.snippets.review_docs_command.content }}
 
 ## Context

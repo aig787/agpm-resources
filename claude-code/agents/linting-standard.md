@@ -5,6 +5,7 @@ description: |
 model: claude-3-haiku
 color: yellow
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -12,7 +13,6 @@ dependencies:
       path: ../../snippets/agents/linting-standard.md
       install: false
 ---
-
 {{ agpm.deps.snippets.linting_standard_base.content }}
 
 ## Tool-Specific Notes

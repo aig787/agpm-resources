@@ -1,3 +1,8 @@
+---
+agpm:
+  version: "1.0.0"
+---
+
 # Java Style Guide
 
 This document defines the code style standards for Java projects. It covers formatting, naming conventions, type annotations, imports, and documentation style.

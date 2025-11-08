@@ -3,6 +3,7 @@ allowed-tools: Bash(git diff:*), Bash(git status:*), Bash(git log:*), Read, Edit
 description: Review code changes and ensure all related documentation is accurate and up-to-date
 argument-hint: '[ --check-only | --auto-update | --focus=<module> ] - e.g., "--focus=cli" to review specific module docs'
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -10,7 +11,6 @@ dependencies:
       path: ../../snippets/commands/update-docstrings.md
       install: false
 ---
-
 {{ agpm.deps.snippets.update_docstrings_logic.content }}
 
 ## Context

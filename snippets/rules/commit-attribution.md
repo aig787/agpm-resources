@@ -1,3 +1,8 @@
+---
+agpm:
+  version: "1.0.0"
+---
+
 # Git Commit Attribution Analysis Logic
 
 ## Automatic AI Contribution Analysis

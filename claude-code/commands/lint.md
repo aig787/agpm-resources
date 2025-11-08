@@ -4,6 +4,7 @@ description: |
   Run code quality checks (formatting, linting, type checking) based on the language style guide
 argument-hint: "[ --fix | --check ] [ --all ] [ --doc ] [ --test ] - e.g., \"--fix --test\" or \"--check --all\""
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -18,7 +19,6 @@ dependencies:
       path: ../agents/linting-advanced.md
       tool: claude-code
 ---
-
 ## Context
 
 - Current working directory: !`pwd`

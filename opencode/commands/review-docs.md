@@ -1,6 +1,7 @@
 ---
 description: Review and update all documentation files in docs/ directory for accuracy
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -8,7 +9,6 @@ dependencies:
       path: ../../snippets/commands/review-docs.md
       install: false
 ---
-
 ## Your task
 
 Review all markdown files in the docs/ directory and ensure they accurately reflect the project's current state based on the actual implementation.

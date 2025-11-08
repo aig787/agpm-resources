@@ -2,6 +2,7 @@
 name: github-actions-expert
 description: Expert agent specializing in GitHub Actions workflow syntax, configuration, and best practices
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -9,7 +10,6 @@ dependencies:
       path: ../../snippets/agents/github-actions-expert.md
       install: false
 ---
-
 {{ agpm.deps.snippets.github_actions_expert_base.content }}
 
 ## Tool-Specific Notes

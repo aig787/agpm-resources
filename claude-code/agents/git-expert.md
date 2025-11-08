@@ -2,6 +2,7 @@
 name: git-expert
 description: Expert in all things git related, understanding complex git workflows and limitations
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -9,7 +10,6 @@ dependencies:
       path: ../../snippets/agents/git-expert.md
       install: false
 ---
-
 {{ agpm.deps.snippets.git_expert_base.content }}
 
 ## Tool-Specific Notes

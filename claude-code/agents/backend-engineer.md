@@ -4,6 +4,7 @@ description: |
   Use this agent when you need to develop, refactor, or optimize backend systems. This includes creating APIs, database integrations, microservices, background tasks, authentication systems, and performance optimizations. Examples: <example>Context: User needs to create an API application with database integration. user: 'I need to build a REST API for a task management system with database integration' assistant: 'I'll use the backend-engineer agent to architect and implement this application with proper database models and endpoints' <commentary>Since this involves backend development with database integration, use the backend-engineer agent to create a well-structured API.</commentary></example> <example>Context: User has existing code that needs optimization and better structure. user: 'This service is getting slow and the code is messy. Can you help refactor it?' assistant: 'Let me use the backend-engineer agent to analyze and refactor your service for better performance and maintainability' <commentary>Since this involves backend optimization and refactoring, use the backend-engineer agent to improve the codebase.</commentary></example>
 color: green
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -14,7 +15,6 @@ dependencies:
     - name: context7
       path: ../mcp-servers/context7.json
 ---
-
 {{ agpm.deps.snippets.backend_engineer_base.content }}
 
 ## Tool-Specific Notes

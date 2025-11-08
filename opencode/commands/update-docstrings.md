@@ -1,6 +1,7 @@
 ---
 description: Review code changes and ensure all related documentation is accurate and up-to-date
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -8,7 +9,6 @@ dependencies:
       path: ../../snippets/commands/update-docstrings.md
       install: false
 ---
-
 ## Your task
 
 Review the current code changes and ensure all related documentation accurately reflects the implementation.

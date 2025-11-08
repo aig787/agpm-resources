@@ -1,6 +1,7 @@
 ---
 description: Create well-formatted git commits following project conventions - supports single or multiple logically grouped commits
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -8,7 +9,6 @@ dependencies:
       path: ../../snippets/commands/commit.md
       install: false
 ---
-
 ## Your task
 
 Create well-formatted git commits following project conventions.

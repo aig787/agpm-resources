@@ -1,6 +1,7 @@
 ---
 description: Run code quality checks (formatting, linting, type checking) based on the language style guide
 agpm:
+  version: "1.0.0"
   templating: true
 dependencies:
   snippets:
@@ -15,7 +16,6 @@ dependencies:
       path: ../agents/linting-advanced.md
       tool: opencode
 ---
-
 **IMPORTANT**: You are being asked to directly run code quality checks - analyze the code, apply fixes if requested, and run tests to verify changes. Do NOT ask for permission or confirmation.
 
 ## Argument Parsing
