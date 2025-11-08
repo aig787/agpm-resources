@@ -21,7 +21,7 @@ on:
       force_version_bump:
         description: 'Force specific version bump type'
         required: false
-        default: 'auto'
+        default: 'patch'
         type: choice
         options:
           - 'auto'
@@ -90,24 +90,12 @@ jobs:
         id: analyze
         if: steps.detect.outputs.has_changes == 'true'
         run: |
-          # Get commit messages from the push
-          COMMIT_MSG=$(git log -1 --pretty=%B)
-
-          echo "Analyzing commit message:"
-          echo "$COMMIT_MSG"
-
           # Determine version bump type
           BUMP_TYPE="${{ github.event.inputs.force_version_bump }}"
 
           if [ "$BUMP_TYPE" = "" ] || [ "$BUMP_TYPE" = "auto" ]; then
-            # Auto-detect from commit message (conventional commits)
-            if echo "$COMMIT_MSG" | grep -qiE '^(BREAKING CHANGE:|feat!:|fix!:)'; then
-              BUMP_TYPE="major"
-            elif echo "$COMMIT_MSG" | grep -qiE '^feat(\(.+\))?:'; then
-              BUMP_TYPE="minor"
-            else
-              BUMP_TYPE="patch"
-            fi
+            # Default to patch for automatic versioning
+            BUMP_TYPE="patch"
           fi
 
           echo "Version bump type: $BUMP_TYPE"

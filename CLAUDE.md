@@ -412,41 +412,32 @@ dependencies:
 The repository includes a GitHub Actions workflow (`.github/workflows/tag-artifacts.yml`) that automatically:
 
 1. **Detects changed artifacts** when code is pushed to `main`
-2. **Analyzes commit messages** to determine version bump type
+2. **Applies patch bump** by default to all changed artifacts
 3. **Updates version** in artifact frontmatter
 4. **Creates Git tags** for changed artifacts
 5. **Pushes tags** to the repository
 6. **Generates summary** of created tags
 
-**Commit Message Conventions**:
+**Version Bump Behavior**:
 
-To control version bumping, use conventional commit messages:
+- **Default**: All artifact changes receive a patch version bump (v1.0.0 → v1.0.1)
+- **Manual Override**: Use GitHub Actions to specify major/minor/patch when needed
 
-```bash
-# Major version bump (breaking change)
-git commit -m "feat!: redesign backend-engineer agent interface"
-git commit -m "BREAKING CHANGE: remove deprecated command flags"
+**Manual Version Control**:
 
-# Minor version bump (new feature)
-git commit -m "feat: add type checking to lint command"
-git commit -m "feat(agent): enhance error handling in backend-engineer"
-
-# Patch version bump (bug fix, default)
-git commit -m "fix: correct path reference in commit command"
-git commit -m "docs: update backend-engineer usage examples"
-git commit -m "chore: improve formatting in lint-config"
-```
-
-**Manual Workflow Dispatch**:
-
-You can also trigger tagging manually:
+You can control version bumping manually:
 
 ```bash
 # Via GitHub UI: Actions → Tag Artifacts → Run workflow
 # Choose options:
 # - dry_run: true/false (test without creating tags)
-# - force_version_bump: auto/major/minor/patch
+# - force_version_bump: patch/major/minor
 ```
+
+**Examples**:
+- **patch** (default): Bug fixes, documentation updates, minor improvements
+- **minor**: Add new features or enhance existing functionality
+- **major**: Breaking changes that affect artifact interfaces or dependencies
 
 ### Dependency Version Constraints
 
@@ -504,8 +495,7 @@ bash .github/scripts/create-tags.sh initial-tags.txt
    agpm:
      version: "1.2.0"  # Increment as needed
    ```
-3. Commit with appropriate conventional commit message
-4. Push to trigger automated tagging
+3. Commit and push to trigger automated tagging (defaults to patch bump)
 
 **Creating tags manually**:
 
