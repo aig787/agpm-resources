@@ -1,7 +1,7 @@
 ---
 description: Review changes and update CLAUDE.md and/or AGENTS.md to reflect current architecture
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
   templating: true
 dependencies:
   snippets:

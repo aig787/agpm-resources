@@ -2,7 +2,7 @@
 name: git-expert
 description: Expert in all things git related, understanding complex git workflows and limitations
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
   templating: true
 dependencies:
   snippets:

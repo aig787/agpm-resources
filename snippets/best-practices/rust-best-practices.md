@@ -1,8 +1,7 @@
 ---
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
-
 # Rust Best Practices
 
 This document defines technical best practices for Rust development, covering tools, patterns, testing, security, and performance optimization.

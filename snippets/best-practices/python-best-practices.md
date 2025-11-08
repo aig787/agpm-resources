@@ -1,8 +1,7 @@
 ---
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
-
 # Python Best Practices
 
 This document defines technical best practices for Python development, covering tools, patterns, testing, security, and performance optimization.

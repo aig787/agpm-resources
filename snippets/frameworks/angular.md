@@ -1,6 +1,6 @@
 ---
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
   templating: false
 ---
 You are working with Angular, a comprehensive TypeScript-based framework for building web applications. Follow these Angular-specific best practices and patterns.

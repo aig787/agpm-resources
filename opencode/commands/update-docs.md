@@ -1,7 +1,7 @@
 ---
 description: Review changes and update README.md to stay current with implementation
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
   templating: true
 dependencies:
   snippets:

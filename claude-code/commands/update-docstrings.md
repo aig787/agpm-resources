@@ -3,7 +3,7 @@ allowed-tools: Bash(git diff:*), Bash(git status:*), Bash(git log:*), Read, Edit
 description: Review code changes and ensure all related documentation is accurate and up-to-date
 argument-hint: '[ --check-only | --auto-update | --focus=<module> ] - e.g., "--focus=cli" to review specific module docs'
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
   templating: true
 dependencies:
   snippets:

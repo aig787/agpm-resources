@@ -1,8 +1,7 @@
 ---
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
-
 # JavaScript Style Guide
 
 This document defines the code style standards for JavaScript projects. It covers formatting, naming conventions, type annotations, imports, and documentation style.

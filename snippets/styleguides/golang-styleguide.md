@@ -1,8 +1,7 @@
 ---
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
-
 # Go Style Guide
 
 This document defines the code style standards for Go projects. It covers formatting, naming conventions, types, imports, and documentation style.

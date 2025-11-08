@@ -1,7 +1,7 @@
 ---
 description: Create GitHub pull requests with automatic title and description generation
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
   templating: true
 dependencies:
   snippets:

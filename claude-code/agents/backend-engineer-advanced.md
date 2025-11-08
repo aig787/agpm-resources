@@ -4,7 +4,7 @@ description: |
   Use this agent for COMPLEX backend engineering challenges requiring advanced expertise in distributed systems, performance optimization, security hardening, or large-scale architecture. Reserve this for the 20% of cases that need deep architectural reasoning. Examples: <example>Context: User needs to design a microservices architecture with high availability requirements. user: 'I need to design a distributed system that handles 10K requests/second with 99.99% uptime' assistant: 'I'll use the backend-engineer-advanced agent to design a scalable, resilient architecture with appropriate trade-offs' <commentary>This requires advanced distributed systems knowledge, so use backend-engineer-advanced to architect a production-grade solution.</commentary></example> <example>Context: User has complex performance bottlenecks in production. user: 'Our API is slow under load. Database queries are timing out and we're seeing memory leaks' assistant: 'Let me use the backend-engineer-advanced agent to profile, diagnose, and optimize the system' <commentary>This requires advanced performance analysis and optimization expertise, so use backend-engineer-advanced.</commentary></example> <example>Context: User needs to implement OAuth2 with multi-tenancy and rate limiting. user: 'I need to add OAuth2 authentication with tenant isolation and API rate limiting' assistant: 'I'll use the backend-engineer-advanced agent to implement a secure, scalable auth system' <commentary>This requires advanced security and architecture knowledge, so use backend-engineer-advanced.</commentary></example>
 color: purple
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
   templating: true
 dependencies:
   snippets:

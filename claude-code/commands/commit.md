@@ -4,7 +4,7 @@ description: |
   Create well-formatted git commits following project conventions - supports single or multiple logically grouped commits
 argument-hint: "[ --multi[=N] | --co-authored | --contributed | --no-attribution | --include-untracked ] [ paths... ] [ message ] - e.g., \"--multi\" or \"--multi=3\" for multiple commits or \"tests/\" for specific paths"
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
   templating: true
 dependencies:
   snippets:

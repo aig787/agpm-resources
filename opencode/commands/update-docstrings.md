@@ -1,7 +1,7 @@
 ---
 description: Review code changes and ensure all related documentation is accurate and up-to-date
 agpm:
-  version: "1.0.0"
+  version: "1.1.0"
   templating: true
 dependencies:
   snippets:
