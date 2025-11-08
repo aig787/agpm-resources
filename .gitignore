@@ -11,6 +11,11 @@ examples/*
 agpm.private.toml
 agpm.private.lock
 
+# Versioning system temporary files
+changed_artifacts.txt
+tags.txt
+initial-tags.txt
+
 # AGPM managed entries - do not edit below this line
 .agpm/snippets/private/snippets/commands/import.md
 .agpm/snippets/private/snippets/commands/update-examples.md
