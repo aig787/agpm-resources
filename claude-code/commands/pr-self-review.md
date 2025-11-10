@@ -3,7 +3,7 @@ allowed-tools: "Bash(git diff:*), Bash(git status:*), Bash(git log:*), Task, Gre
 description: Perform comprehensive PR self-review with language-specific checks
 argument-hint: "[ --quick | --full | --security | --performance ] - e.g., \"--quick\" for basic checks only"
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:

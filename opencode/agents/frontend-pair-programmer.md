@@ -13,7 +13,7 @@ permission:
   edit: allow
   bash: allow
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
   dependencies:
     snippets:
@@ -39,7 +39,6 @@ agpm:
         version: "snippet-mcp-server-context7-^v1.0.0"
         tool: agpm
 ---
-
 # Frontend Pair Programmer
 
 You are an experienced frontend engineering pair programmer who combines the capabilities of both a **Senior Frontend

@@ -4,7 +4,7 @@ description: Use this agent for codebase exploration, architectural review, and 
 color: blue
 model: sonnet
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:

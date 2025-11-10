@@ -12,7 +12,7 @@ permission:
   edit: allow
   bash: ask
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:
@@ -26,7 +26,6 @@ dependencies:
       version: "snippet-mcp-server-context7-^v1.0.0"
       tool: agpm
 ---
-
 {{ agpm.deps.snippets.backend_engineer_base.content }}
 
 **Additional tool-specific context**:

@@ -5,7 +5,7 @@ description: |
 model: claude-3-haiku
 color: yellow
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:

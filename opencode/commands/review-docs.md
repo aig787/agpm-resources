@@ -1,7 +1,7 @@
 ---
 description: Review and update all documentation files in docs/ directory for accuracy
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:

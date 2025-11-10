@@ -2,7 +2,7 @@
 name: checkpoint
 description: Git-based checkpoint system for preserving development state without polluting branch history
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:

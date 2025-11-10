@@ -4,7 +4,7 @@ description: |
   Run code quality checks (formatting, linting, type checking) based on the language style guide
 argument-hint: "[ --fix | --check ] [ --all ] [ --doc ] [ --test ] - e.g., \"--fix --test\" or \"--check --all\""
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:

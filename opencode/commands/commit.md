@@ -1,7 +1,7 @@
 ---
 description: Create well-formatted git commits following project conventions - supports single or multiple logically grouped commits
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:

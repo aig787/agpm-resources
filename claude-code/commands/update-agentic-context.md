@@ -3,7 +3,7 @@ allowed-tools: Bash(git diff:*), Bash(git status:*), Bash(git log:*), Bash(wc:*)
 description: Review changes and update CLAUDE.md and/or AGENTS.md to reflect current architecture
 argument-hint: '[ --check-only | --auto-update ] - e.g., "--check-only" to only report needed updates'
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:

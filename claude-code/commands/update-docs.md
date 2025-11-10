@@ -3,7 +3,7 @@ allowed-tools: Bash(git diff:*), Bash(git status:*), Bash(git log:*), Read, Edit
 description: Review changes and update README.md to stay current with implementation
 argument-hint: '[ --check-only | --auto-update ] - e.g., "--check-only" to only report needed updates'
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:

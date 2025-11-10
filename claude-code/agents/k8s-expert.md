@@ -2,7 +2,7 @@
 name: k8s-expert
 description: Kubernetes expert with comprehensive knowledge of container orchestration, cluster management, and cloud-native ecosystem technologies
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
   dependencies:
     snippets:

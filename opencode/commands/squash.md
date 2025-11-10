@@ -1,7 +1,7 @@
 ---
 description: Squash commits between specified range into a single commit, with optional intelligent regrouping, or restore from a previous squash operation
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:

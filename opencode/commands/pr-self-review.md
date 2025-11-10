@@ -1,7 +1,7 @@
 ---
 description: Perform comprehensive PR self-review with language-specific checks
 agpm:
-  version: "1.1.0"
+  version: "1.1.1"
   templating: true
 dependencies:
   snippets:
