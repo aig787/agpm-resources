@@ -23,7 +23,7 @@ dependencies:
       install: false
     - name: context7
       path: ../mcp-servers/context7.json
-      version: "snippet-mcp-server-context7-^v1.0.0"
+      version: "opencode-mcp-server-context7-^v1.0.0"
       tool: agpm
 ---
 {{ agpm.deps.snippets.backend_engineer_base.content }}
