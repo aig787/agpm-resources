@@ -6,7 +6,7 @@ dependencies:
   snippets:
     - name: styleguide
       path: ../styleguides/{{ agpm.project.language }}-styleguide.md
-      version: "snippet-styleguide-{{ agpm.project.language }}-^v1.1.0"
+      version: "snippet-styleguides-{{ agpm.project.language }}-^v1.1.0"
       tool: agpm
       install: false
     - name: best-practices

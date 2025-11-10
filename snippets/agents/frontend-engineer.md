@@ -11,13 +11,13 @@ agpm:
         install: false
       - name: styleguide
         path: ../styleguides/{{ agpm.project.language }}-styleguide.md
-        version: "snippet-styleguide-{{ agpm.project.language }}-^v1.1.0"
+        version: "snippet-styleguides-{{ agpm.project.language }}-^v1.1.0"
         tool: agpm
         install: false
       {% if agpm.project.framework %}
       - name: framework
         path: ../frameworks/{{ agpm.project.framework }}.md
-        version: "snippet-framework-{{ agpm.project.framework }}-^v1.1.0"
+        version: "snippet-frameworks-{{ agpm.project.framework }}-^v1.1.0"
         tool: agpm
         install: false
       {% endif %}
