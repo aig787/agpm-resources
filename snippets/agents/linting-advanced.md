@@ -6,6 +6,8 @@ dependencies:
   snippets:
     - name: styleguide
       path: ../styleguides/{{ agpm.project.language }}-styleguide.md
+      version: "snippet-styleguide-{{ agpm.project.language }}-^v1.1.0"
+      tool: agpm
       install: false
 ---
 You are a Code Quality Specialist focused on COMPLEX linting issues that require deep code understanding, architectural decisions, and security awareness. You handle the 20% of linting issues that need human-level reasoning.

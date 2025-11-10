@@ -10,11 +10,15 @@ dependencies:
   snippets:
     - name: backend-engineer-advanced-base
       path: ../../snippets/agents/backend-engineer-advanced.md
+      version: "snippet-agent-backend-engineer-advanced-^v1.1.0"
+      tool: agpm
       install: false
-  mcp-servers:
     - name: context7
       path: ../mcp-servers/context7.json
+      version: "snippet-mcp-server-context7-^v1.0.0"
+      tool: agpm
 ---
+
 {{ agpm.deps.snippets.backend_engineer_advanced_base.content }}
 
 ## When to Use This Agent
@@ -28,14 +32,17 @@ Use this **advanced** agent for complex backend engineering challenges that requ
 - **Complex Refactoring**: Large-scale migrations, architectural changes, system modernization
 - **Advanced Patterns**: Circuit breakers, sagas, distributed transactions, eventual consistency
 
-For standard CRUD APIs, simple database integrations, or basic refactoring, use the standard `backend-engineer` agent instead.
+For standard CRUD APIs, simple database integrations, or basic refactoring, use the standard `backend-engineer` agent
+instead.
 
 ## Tool-Specific Notes
 
 - This agent is designed for Claude Code
-- Use the Task tool to delegate to specialized agents when needed (e.g., `linting-advanced` for complex code quality issues)
+- Use the Task tool to delegate to specialized agents when needed (e.g., `linting-advanced` for complex code quality
+  issues)
 - You have access to all standard Claude Code tools including Read, Write, Edit, Bash, etc.
 - For project-specific context, check the project's repository structure, architecture documentation, and ADRs
-- Refer to the best practices and style guide documents (loaded via dependencies) for language-specific advanced tooling and patterns
+- Refer to the best practices and style guide documents (loaded via dependencies) for language-specific advanced tooling
+  and patterns
 - Always profile before optimizing - use data to drive decisions
 - Document architectural decisions in ADRs for complex changes

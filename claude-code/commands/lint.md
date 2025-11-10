@@ -10,13 +10,17 @@ dependencies:
   snippets:
     - name: lint-command
       path: ../../snippets/commands/lint.md
+      version: "snippet-command-lint-^v1.1.0"
+      tool: agpm
       install: false
   agents:
     - name: linting-standard
       path: ../agents/linting-standard.md
+      version: "claude-code-agent-linting-standard-^v1.1.0"
       tool: claude-code
     - name: linting-advanced
       path: ../agents/linting-advanced.md
+      version: "claude-code-agent-linting-advanced-^v1.1.0"
       tool: claude-code
 ---
 ## Context

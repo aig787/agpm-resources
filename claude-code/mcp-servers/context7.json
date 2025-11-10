@@ -1,4 +1,10 @@
 {
+  "agpm": {
+    "version": "1.0.1"
+  },
   "command": "npx",
-  "args": ["-y", "@upstash/context7-mcp"]
+  "args": [
+    "-y",
+    "@upstash/context7-mcp"
+  ]
 }

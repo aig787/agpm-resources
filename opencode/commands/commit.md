@@ -7,6 +7,8 @@ dependencies:
   snippets:
     - name: commit-base
       path: ../../snippets/commands/commit.md
+      version: "snippet-command-commit-^v1.1.0"
+      tool: agpm
       install: false
 ---
 ## Your task

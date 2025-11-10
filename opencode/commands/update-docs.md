@@ -7,6 +7,8 @@ dependencies:
   snippets:
     - name: update-docs-command
       path: ../../snippets/commands/update-docs.md
+      version: "snippet-command-update-docs-^v1.1.0"
+      tool: agpm
       install: false
 ---
 ## Your task

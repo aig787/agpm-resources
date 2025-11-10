@@ -7,13 +7,17 @@ dependencies:
   snippets:
     - name: lint-command
       path: ../../snippets/commands/lint.md
+      version: "snippet-command-lint-^v1.1.0"
+      tool: agpm
       install: false
   agents:
     - name: linting-standard
       path: ../agents/linting-standard.md
+      version: "opencode-agent-linting-standard-^v1.1.0"
       tool: opencode
     - name: linting-advanced
       path: ../agents/linting-advanced.md
+      version: "opencode-agent-linting-advanced-^v1.1.0"
       tool: opencode
 ---
 **IMPORTANT**: You are being asked to directly run code quality checks - analyze the code, apply fixes if requested, and run tests to verify changes. Do NOT ask for permission or confirmation.

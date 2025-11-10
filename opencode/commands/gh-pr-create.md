@@ -7,6 +7,8 @@ dependencies:
   snippets:
     - name: gh-pr-create-base
       path: ../../snippets/commands/gh-pr-create.md
+      version: "snippet-command-gh-pr-create-^v1.1.0"
+      tool: agpm
       install: false
 ---
 {{ agpm.deps.snippets.gh_pr_create_base.content }}

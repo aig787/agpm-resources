@@ -1,5 +1,10 @@
 {
-  "events": ["SessionStart"],
+  "agpm": {
+    "version": "1.0.1"
+  },
+  "events": [
+    "SessionStart"
+  ],
   "type": "command",
   "command": "agpm update",
   "description": "Update AGPM packages"

@@ -18,6 +18,8 @@ dependencies:
   snippets:
     - name: linting-standard-base
       path: ../../snippets/agents/linting-standard.md
+      version: "snippet-agent-linting-standard-^v1.1.0"
+      tool: agpm
       install: false
 ---
 {{ agpm.deps.snippets.linting_standard_base.content }}

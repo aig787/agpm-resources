@@ -10,11 +10,15 @@ dependencies:
   snippets:
     - name: backend-engineer-base
       path: ../../snippets/agents/backend-engineer.md
+      version: "snippet-agent-backend-engineer-^v1.1.0"
+      tool: agpm
       install: false
-  mcp-servers:
     - name: context7
       path: ../mcp-servers/context7.json
+      version: "snippet-mcp-server-context7-^v1.0.0"
+      tool: agpm
 ---
+
 {{ agpm.deps.snippets.backend_engineer_base.content }}
 
 ## Tool-Specific Notes
@@ -23,4 +27,5 @@ dependencies:
 - Use the Task tool to delegate complex tasks to specialized agents when needed
 - You have access to all standard Claude Code tools including Read, Write, Edit, Bash, etc.
 - For project-specific context, check the project's repository structure and conventions
-- Refer to the best practices and style guide documents (loaded via dependencies) for language-specific tooling and patterns
+- Refer to the best practices and style guide documents (loaded via dependencies) for language-specific tooling and
+  patterns

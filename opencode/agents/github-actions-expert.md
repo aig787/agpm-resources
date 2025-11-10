@@ -18,6 +18,8 @@ dependencies:
   snippets:
     - name: github-actions-expert-base
       path: ../../snippets/agents/github-actions-expert.md
+      version: "snippet-agent-github-actions-expert-^v1.1.0"
+      tool: agpm
       install: false
 ---
 {{ agpm.deps.snippets.github_actions_expert_base.content }}

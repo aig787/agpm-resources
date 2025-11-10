@@ -8,6 +8,9 @@ on:
       - 'snippets/**/*.md'
       - 'claude-code/**/*.md'
       - 'opencode/**/*.md'
+      - 'claude-code/hooks/*.json'
+      - 'claude-code/mcp-servers/*.json'
+      - 'opencode/mcp-servers/*.json'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -73,7 +76,7 @@ jobs:
           echo "$CHANGED_FILES"
 
           # Filter for artifact files
-          ARTIFACTS=$(echo "$CHANGED_FILES" | grep -E '^(snippets|claude-code|opencode)/.*\.md$' || true)
+          ARTIFACTS=$(echo "$CHANGED_FILES" | grep -E '^(snippets|claude-code|opencode)/.*\.(md|json)$' || true)
 
           if [ -z "$ARTIFACTS" ]; then
             echo "No artifact files changed"

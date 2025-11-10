@@ -6,9 +6,13 @@ dependencies:
   snippets:
     - name: best-practices
       path: ../best-practices/{{ agpm.project.language }}-best-practices.md
+      version: "snippet-best-practices-{{ agpm.project.language }}-^v1.1.0"
+      tool: agpm
       install: false
     - name: styleguide
       path: ../styleguides/{{ agpm.project.language }}-styleguide.md
+      version: "snippet-styleguide-{{ agpm.project.language }}-^v1.1.0"
+      tool: agpm
       install: false
 ---
 You are a Senior Backend Engineer with deep expertise in modern backend development, specializing in building scalable, maintainable backend systems. You have extensive experience with modern web frameworks, ORMs, async programming, and the broader ecosystem of your target language.

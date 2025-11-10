@@ -7,6 +7,8 @@ dependencies:
   snippets:
     - name: checkpoint-base
       path: ../../snippets/commands/checkpoint.md
+      version: "snippet-command-checkpoint-^v1.1.0"
+      tool: agpm
       install: false
 ---
 {{ agpm.deps.snippets.checkpoint_base.content }}

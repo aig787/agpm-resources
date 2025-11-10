@@ -7,6 +7,8 @@ dependencies:
   snippets:
     - name: pr-self-review-base
       path: ../../snippets/commands/pr-self-review.md
+      version: "snippet-command-pr-self-review-^v1.1.0"
+      tool: agpm
       install: false
 ---
 ## Your task

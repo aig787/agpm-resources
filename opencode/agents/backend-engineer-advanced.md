@@ -18,11 +18,15 @@ dependencies:
   snippets:
     - name: backend-engineer-advanced-base
       path: ../../snippets/agents/backend-engineer-advanced.md
+      version: "snippet-agent-backend-engineer-advanced-^v1.1.0"
+      tool: agpm
       install: false
-  mcp-servers:
     - name: context7
       path: ../mcp-servers/context7.json
+      version: "snippet-mcp-server-context7-^v1.0.0"
+      tool: agpm
 ---
+
 {{ agpm.deps.snippets.backend_engineer_advanced_base.content }}
 
 ## When to Use This Agent
@@ -42,8 +46,8 @@ For standard CRUD APIs, simple database work, or basic refactoring, delegate to 
 
 - For OpenCode specific features, refer to OpenCode documentation
 - Agent invocation: Suggest invoking specialized agents when appropriate:
-  - "Please invoke backend-engineer agent" for standard implementation tasks
-  - "Please invoke linting-advanced agent" for complex code quality issues
+    - "Please invoke backend-engineer agent" for standard implementation tasks
+    - "Please invoke linting-advanced agent" for complex code quality issues
 - Always profile and measure before optimizing - use data to drive decisions
 - Document architectural decisions in ADRs for complex changes
 - Implement incrementally with feature flags and rollback plans

@@ -3,8 +3,10 @@ in-memoria.db
 
 # Ignore everything in examples directory except agpm.toml
 examples/*
-!examples/agpm.toml
-!examples/project*.md
+!examples/local/agpm.toml
+!examples/local/project*.md
+!examples/git/agpm.toml
+!examples/git/project*.md
 
 # AGPM
 .agpm/backups/

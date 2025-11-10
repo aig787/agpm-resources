@@ -9,13 +9,17 @@ dependencies:
   snippets:
     - name: update-agentic-context-logic
       path: ../../snippets/commands/update-agentic-context.md
+      version: "snippet-command-update-agentic-context-^v1.1.0"
+      tool: agpm
       install: false
   agents:
     - name: backend-engineer
       path: ../agents/backend-engineer.md
+      version: "claude-code-agent-backend-engineer-^v1.1.0"
       tool: claude-code
     - name: general-purpose
       path: ../agents/general-purpose.md
+      version: "claude-code-agent-general-purpose-^v1.1.0"
       tool: claude-code
 ---
 {{ agpm.deps.snippets.update_agentic_context_logic.content }}

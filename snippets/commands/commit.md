@@ -6,6 +6,8 @@ dependencies:
   snippets:
     - name: commit-attribution-rules
       path: ../rules/commit-attribution.md
+      version: "snippet-rules-commit-attribution-^v1.1.0"
+      tool: agpm
       install: false
 ---
 ## Your task

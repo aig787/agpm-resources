@@ -7,6 +7,8 @@ dependencies:
   snippets:
     - name: review-docs-command
       path: ../../snippets/commands/review-docs.md
+      version: "snippet-command-review-docs-^v1.1.0"
+      tool: agpm
       install: false
 ---
 ## Your task

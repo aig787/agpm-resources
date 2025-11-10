@@ -11,6 +11,7 @@ This script:
 """
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
@@ -59,6 +60,24 @@ def parse_frontmatter(content: str) -> Tuple[Optional[Dict], str, str]:
                     frontmatter['version'] = version_match.group(1)
 
     return frontmatter, frontmatter_text, body
+
+
+def parse_json_agpm_version(content: str) -> Tuple[Optional[str], bool]:
+    """
+    Parse JSON content to extract agpm.version.
+
+    Returns:
+        Tuple of (version, is_valid_json)
+    """
+    try:
+        data = json.loads(content)
+        if isinstance(data, dict) and 'agpm' in data:
+            agpm_section = data['agpm']
+            if isinstance(agpm_section, dict) and 'version' in agpm_section:
+                return agpm_section['version'], True
+        return None, True
+    except json.JSONDecodeError:
+        return None, False
 
 
 def bump_version(version: str, bump_type: str) -> str:
@@ -140,6 +159,8 @@ def parse_artifact_path(filepath: str) -> Tuple[str, str, str]:
     Examples:
         snippets/agents/backend-engineer.md -> (snippet, agent, backend-engineer)
         claude-code/commands/commit.md -> (claude-code, command, commit)
+        claude-code/hooks/agpm-update.json -> (claude-code, hooks, agpm-update)
+        claude-code/mcp-servers/context7.json -> (claude-code, mcp, context7)
         snippets/best-practices/python-best-practices.md -> (snippet, best-practices, python)
     """
     path = Path(filepath)
@@ -155,20 +176,33 @@ def parse_artifact_path(filepath: str) -> Tuple[str, str, str]:
     else:
         raise ValueError(f"Unknown tool in path: {filepath}")
 
-    # Determine category and name
-    if len(parts) < 3:
+    # Handle different path structures for different artifact types
+    if len(parts) < 2:
         raise ValueError(f"Invalid artifact path structure: {filepath}")
 
-    category = parts[1]
+    # Special handling for JSON files (hooks and mcp-servers)
+    if path.suffix == '.json':
+        if parts[1] == 'hooks':
+            category = 'hook'
+        elif parts[1] == 'mcp-servers':
+            category = 'mcp-server'
+        else:
+            raise ValueError(f"Unknown JSON file category in path: {filepath}")
+    else:
+        # Markdown files (agents, commands, best-practices, styleguides, etc.)
+        if len(parts) < 3:
+            raise ValueError(f"Invalid artifact path structure: {filepath}")
 
-    # Special handling for category names
-    if category == 'agents':
-        category = 'agent'
-    elif category == 'commands':
-        category = 'command'
-    # Keep other categories as-is (best-practices, styleguides, frameworks, rules)
+        category = parts[1]
 
-    # Extract artifact name (filename without .md extension)
+        # Special handling for category names
+        if category == 'agents':
+            category = 'agent'
+        elif category == 'commands':
+            category = 'command'
+        # Keep other categories as-is (best-practices, styleguides, frameworks, rules)
+
+    # Extract artifact name (filename without extension)
     artifact_name = path.stem
 
     # For best-practices and styleguides, remove the suffix
@@ -221,31 +255,66 @@ def process_artifact(
 
     # Read file content
     content = file_path.read_text(encoding='utf-8')
+    current_version = None
+    new_version = None
 
-    # Parse frontmatter
-    frontmatter, frontmatter_text, body = parse_frontmatter(content)
+    # Handle JSON files (hooks and mcp-servers)
+    if file_path.suffix == '.json':
+        existing_version, is_valid = parse_json_agpm_version(content)
 
-    if frontmatter_text == "":
-        print(f"Warning: No frontmatter found in {filepath}", file=sys.stderr)
-        return None
+        if not is_valid:
+            print(f"Warning: Invalid JSON in {filepath}", file=sys.stderr)
+            return None
 
-    # Get current version (default to 0.1.0 if not present)
-    current_version = frontmatter.get('version', '0.1.0') if frontmatter else '0.1.0'
+        # Get current version (default to 0.1.0 if not present)
+        current_version = existing_version or '0.1.0'
 
-    # Bump version
-    new_version = bump_version(current_version, bump_type)
+        # Bump version
+        new_version = bump_version(current_version, bump_type)
 
-    print(f"{filepath}: {current_version} -> {new_version}")
+        print(f"{filepath}: {current_version} -> {new_version}")
 
-    # Update frontmatter
-    updated_frontmatter = update_frontmatter_version(frontmatter_text, new_version)
+        # Update JSON
+        try:
+            data = json.loads(content)
+            if 'agpm' not in data:
+                data['agpm'] = {}
+            data['agpm']['version'] = new_version
 
-    # Reconstruct file content
-    updated_content = f"---\n{updated_frontmatter}\n---\n{body}"
+            # Write updated content (unless dry-run)
+            if not dry_run:
+                file_path.write_text(json.dumps(data, indent=2) + '\n', encoding='utf-8')
 
-    # Write updated content (unless dry-run)
-    if not dry_run:
-        file_path.write_text(updated_content, encoding='utf-8')
+        except json.JSONDecodeError:
+            print(f"Warning: Could not parse JSON in {filepath}", file=sys.stderr)
+            return None
+
+    # Handle markdown files
+    else:
+        # Parse frontmatter
+        frontmatter, frontmatter_text, body = parse_frontmatter(content)
+
+        if frontmatter_text == "":
+            print(f"Warning: No frontmatter found in {filepath}", file=sys.stderr)
+            return None
+
+        # Get current version (default to 0.1.0 if not present)
+        current_version = frontmatter.get('version', '0.1.0') if frontmatter else '0.1.0'
+
+        # Bump version
+        new_version = bump_version(current_version, bump_type)
+
+        print(f"{filepath}: {current_version} -> {new_version}")
+
+        # Update frontmatter
+        updated_frontmatter = update_frontmatter_version(frontmatter_text, new_version)
+
+        # Reconstruct file content
+        updated_content = f"---\n{updated_frontmatter}\n---\n{body}"
+
+        # Write updated content (unless dry-run)
+        if not dry_run:
+            file_path.write_text(updated_content, encoding='utf-8')
 
     # Generate tag name
     tag = generate_tag_name(filepath, new_version)

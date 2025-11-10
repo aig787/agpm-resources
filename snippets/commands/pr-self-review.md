@@ -6,9 +6,13 @@ dependencies:
   snippets:
     - name: styleguide
       path: ../styleguides/{{ agpm.project.language }}-styleguide.md
+      version: "snippet-styleguide-{{ agpm.project.language }}-^v1.1.0"
+      tool: agpm
       install: false
     - name: best-practices
       path: ../best-practices/{{ agpm.project.language }}-best-practices.md
+      version: "snippet-best-practices-{{ agpm.project.language }}-^v1.1.0"
+      tool: agpm
       install: false
 ---
 # Pull Request Self-Review Command

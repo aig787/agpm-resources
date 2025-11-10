@@ -18,6 +18,8 @@ dependencies:
   snippets:
     - name: git-expert-base
       path: ../../snippets/agents/git-expert.md
+      version: "snippet-agent-git-expert-^v1.1.0"
+      tool: agpm
       install: false
 ---
 {{ agpm.deps.snippets.git_expert_base.content }}

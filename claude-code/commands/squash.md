@@ -8,6 +8,8 @@ dependencies:
   snippets:
     - name: squash-base
       path: ../../snippets/commands/squash.md
+      version: "snippet-command-squash-^v1.1.0"
+      tool: agpm
       install: false
 ---
 {{ agpm.deps.snippets.squash_base.content }}

@@ -6,6 +6,8 @@ dependencies:
   snippets:
     - name: language-styleguide
       path: ../styleguides/{{ agpm.project.language }}-styleguide.md
+      version: "snippet-styleguide-{{ agpm.project.language }}-^v1.1.0"
+      tool: agpm
       install: false
 ---
 ## Your task
