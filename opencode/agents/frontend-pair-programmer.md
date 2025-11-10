@@ -24,13 +24,13 @@ agpm:
         install: false
       - name: styleguide
         path: ../../snippets/styleguides/{{ agpm.project.language }}-styleguide.md
-        version: "snippet-styleguide-{{ agpm.project.language }}-^v1.1.0"
+        version: "snippet-styleguides-{{ agpm.project.language }}-^v1.1.0"
         tool: agpm
         install: false
       {% if agpm.project.framework %}
       - name: framework
         path: '../../snippets/frameworks/{{ agpm.project.framework | default(value="none") }}.md'
-        version: 'snippet-framework-{{ agpm.project.framework | default(value="none") }}-^v1.1.0'
+        version: 'snippet-frameworks-{{ agpm.project.framework | default(value="none") }}-^v1.1.0'
         tool: agpm
         install: false
       {% endif %}
