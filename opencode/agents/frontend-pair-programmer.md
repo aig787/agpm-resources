@@ -13,7 +13,7 @@ permission:
   edit: allow
   bash: allow
 agpm:
-  version: "1.1.2"
+  version: "1.1.3"
   templating: true
   dependencies:
     snippets:
