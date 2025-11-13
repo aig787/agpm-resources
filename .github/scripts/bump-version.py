@@ -109,6 +109,29 @@ def bump_version(version: str, bump_type: str) -> str:
     return f"{major}.{minor}.{patch}"
 
 
+def check_tag_exists(tag_name: str) -> bool:
+    """
+    Check if a git tag exists.
+
+    Args:
+        tag_name: Git tag name to check
+
+    Returns:
+        True if tag exists, False otherwise
+    """
+    try:
+        import subprocess
+        result = subprocess.run(
+            ['git', 'rev-parse', tag_name],
+            capture_output=True,
+            text=True,
+            cwd='.'
+        )
+        return result.returncode == 0
+    except Exception:
+        return False
+
+
 def update_frontmatter_version(frontmatter_text: str, new_version: str) -> str:
     """
     Update version in frontmatter text.
@@ -266,13 +289,29 @@ def process_artifact(
             print(f"Warning: Invalid JSON in {filepath}", file=sys.stderr)
             return None
 
-        # Get current version (default to 0.1.0 if not present)
-        current_version = existing_version or '0.1.0'
+        # Get current version and check tag existence
+        if existing_version:
+            current_version = existing_version
+            current_tag = generate_tag_name(filepath, current_version)
 
-        # Bump version
-        new_version = bump_version(current_version, bump_type)
+            if check_tag_exists(current_tag):
+                # Tag exists, bump normally
+                new_version = bump_version(current_version, bump_type)
+                action_msg = f"{current_version} -> {new_version} (tag existed)"
+                should_write_file = True
+            else:
+                # Tag missing, use current version without bumping
+                new_version = current_version
+                action_msg = f"{current_version} (missing tag, no bump)"
+                should_write_file = False
+        else:
+            # No version exists, use default and bump
+            current_version = '0.1.0'
+            new_version = bump_version(current_version, bump_type)
+            action_msg = f"initial -> {new_version} (no version)"
+            should_write_file = True
 
-        print(f"{filepath}: {current_version} -> {new_version}")
+        print(f"{filepath}: {action_msg}")
 
         # Update JSON
         try:
@@ -281,8 +320,8 @@ def process_artifact(
                 data['agpm'] = {}
             data['agpm']['version'] = new_version
 
-            # Write updated content (unless dry-run)
-            if not dry_run:
+            # Write updated content (unless dry-run and file needs updating)
+            if not dry_run and should_write_file:
                 file_path.write_text(json.dumps(data, indent=2) + '\n', encoding='utf-8')
 
         except json.JSONDecodeError:
@@ -298,13 +337,29 @@ def process_artifact(
             print(f"Warning: No frontmatter found in {filepath}", file=sys.stderr)
             return None
 
-        # Get current version (default to 0.1.0 if not present)
-        current_version = frontmatter.get('version', '0.1.0') if frontmatter else '0.1.0'
+        # Get current version and check tag existence
+        if frontmatter and 'version' in frontmatter:
+            current_version = frontmatter['version']
+            current_tag = generate_tag_name(filepath, current_version)
 
-        # Bump version
-        new_version = bump_version(current_version, bump_type)
+            if check_tag_exists(current_tag):
+                # Tag exists, bump normally
+                new_version = bump_version(current_version, bump_type)
+                action_msg = f"{current_version} -> {new_version} (tag existed)"
+                should_write_file = True
+            else:
+                # Tag missing, use current version without bumping
+                new_version = current_version
+                action_msg = f"{current_version} (missing tag, no bump)"
+                should_write_file = False
+        else:
+            # No version exists, use default and bump
+            current_version = '0.1.0'
+            new_version = bump_version(current_version, bump_type)
+            action_msg = f"initial -> {new_version} (no version)"
+            should_write_file = True
 
-        print(f"{filepath}: {current_version} -> {new_version}")
+        print(f"{filepath}: {action_msg}")
 
         # Update frontmatter
         updated_frontmatter = update_frontmatter_version(frontmatter_text, new_version)
@@ -312,8 +367,8 @@ def process_artifact(
         # Reconstruct file content
         updated_content = f"---\n{updated_frontmatter}\n---\n{body}"
 
-        # Write updated content (unless dry-run)
-        if not dry_run:
+        # Write updated content (unless dry-run and file needs updating)
+        if not dry_run and should_write_file:
             file_path.write_text(updated_content, encoding='utf-8')
 
     # Generate tag name
