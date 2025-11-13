@@ -1,6 +1,6 @@
 ---
 agpm:
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 # Update Documentation Command
 
@@ -12,15 +12,45 @@ Review current code changes and ensure all related documentation accurately refl
 
 ## Argument Parsing
 
-Parse the review mode from arguments:
+Parse arguments following the commit command pattern:
+
+### Step 1: Extract Flags
 - `--check-only`: Only report documentation issues without making changes
 - `--auto-update`: Update documentation to match code changes (default)
 - `--focus=<module>`: Focus on specific module or component
+
+### Step 2: Extract Positional Commit Range
+- First non-flag positional argument is treated as the commit range
+- Range formats supported: `HEAD~5..HEAD`, `origin/main..HEAD`, `abc123..def456`
+- If no positional range provided: Use current changes (`git diff HEAD`) - backward compatible
+
+### Step 3: Handle Separator
+- Everything after `--` separator is treated as additional options
 - Arguments: $ARGUMENTS
+
+### Range Resolution Examples
+- No range: Use `git diff HEAD` for current unstaged/staged changes
+- Positional range: Use `git diff <range>` for specified commit range
+- Add `git log --oneline <range>` to show which commits are being analyzed
 
 ## Change Analysis
 
 Analyze the version control diff to identify code changes:
+
+**Determine the analysis scope based on parsed arguments:**
+
+### Current Changes Analysis (Default Behavior)
+- When no positional range provided: Use `git diff HEAD`
+- Analyze unstaged and staged changes in the working directory
+- Focus on what will be committed in the next commit
+
+### Commit Range Analysis
+- When positional range provided: Use `git diff <range>`
+- Show commits being analyzed with: `git log --oneline <range>`
+- Analyze all changes across the specified commit range
+- Useful for reviewing historical changes or pull request updates
+
+**Change identification regardless of scope:**
 - New functions, classes, or modules added
 - Modified function signatures or behavior
 - Removed or deprecated functionality
@@ -147,8 +177,23 @@ When `--focus=<module>` is specified:
 
 ## Usage Examples
 
+### Current Changes (Default Behavior)
 ```
-/update-docstrings                    # automatically update docs based on code changes
+/update-docstrings                    # automatically update docs based on current changes
 /update-docstrings --check-only       # report documentation issues without changes
 /update-docstrings --focus=<module>   # focus on specific module documentation
 ```
+
+### Positional Commit Range Support
+```
+/update-docstrings HEAD~5..HEAD                 # last 5 commits
+/update-docstrings --check-only HEAD~3..HEAD     # check-only for last 3 commits
+/update-docstrings --focus=api origin/main..HEAD  # specific module since divergence from main
+/update-docstrings abc123..def456                # commits between two specific commits
+/update-docstrings HEAD~10..HEAD -- --focus=api  # range with flag after separator
+```
+
+### Range Resolution Examples
+- **No range**: Uses `git diff HEAD` for current unstaged/staged changes
+- **Positional range**: Uses `git diff <range>` for specified commit range
+- **Multiple commits**: Shows commit list with `git log --oneline <range>` before analysis

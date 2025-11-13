@@ -1,13 +1,13 @@
 ---
-description: Review code changes and ensure all related documentation is accurate and up-to-date
+description: Review code changes and ensure all related documentation is accurate and up-to-date. Supports positional commit ranges for analyzing historical changes.
 agpm:
-  version: "1.1.1"
+  version: "1.2.0"
   templating: true
 dependencies:
   snippets:
     - name: update-docstrings-logic
       path: ../../snippets/commands/update-docstrings.md
-      version: "snippet-command-update-docstrings-^v1.1.0"
+      version: "snippet-command-update-docstrings-^v1.2.0"
       tool: agpm
       install: false
 ---
@@ -21,18 +21,30 @@ Review the current code changes and ensure all related documentation accurately 
 
 ## Argument Parsing
 
-Parse the arguments from the command invocation:
+Parse the arguments from the command invocation following the commit command pattern:
 
 - Arguments received: $ARGUMENTS
-- Parse for flags: `--check-only`, `--auto-update`, `--focus=<module>`
+- **Step 1**: Parse for flags: `--check-only`, `--auto-update`, `--focus=<module>`
+- **Step 2**: Extract first non-flag positional argument as commit range
+- **Step 3**: Handle `--` separator for additional options
 - Pass parsed arguments to the sub-logic referenced above
 
-**Flag Examples**:
+### Positional Range Examples
+**Current Changes (Default)**:
 ```
-/update-docstrings                    # automatically update docs based on code changes
+/update-docstrings                    # automatically update docs based on current changes
 /update-docstrings --check-only       # report documentation issues without changes
 /update-docstrings --focus=api        # focus on API module documentation
 /update-docstrings --focus=core       # focus on core module documentation
+```
+
+**Commit Range Support**:
+```
+/update-docstrings HEAD~5..HEAD                    # last 5 commits
+/update-docstrings --check-only HEAD~3..HEAD      # check-only for last 3 commits
+/update-docstrings --focus=api origin/main..HEAD  # api module since divergence from main
+/update-docstrings abc123..def456                 # commits between two specific SHAs
+/update-docstrings HEAD~10..HEAD -- --focus=api    # range with flag after separator
 ```
 
 ## Execution
@@ -46,11 +58,22 @@ Based on the parsed arguments, execute the appropriate logic from the sub-comman
 
 ## Context Gathering
 
-Before reviewing documentation, gather context:
+Before reviewing documentation, gather context based on parsed arguments:
+
+**Current Changes (no range provided)**:
 - Run `git diff HEAD` to see current changes
 - Run `git status --short` to list modified files
 - Run `git log --oneline -5` to understand recent work
+
+**Commit Range (positional range provided)**:
+- Run `git diff <range>` to see changes in the specified range
+- Run `git log --oneline <range>` to show commits being analyzed
+- Report the scope of analysis (e.g., "Analyzing 5 commits from abc123 to def456")
+
+**Common analysis steps**:
 - Identify which modules or components were modified
+- Determine documentation impact based on changes
+- Plan documentation updates accordingly
 
 ## Tool-Specific Notes
 
