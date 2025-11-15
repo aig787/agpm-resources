@@ -2,10 +2,14 @@ in-memoria.db
 .claude/settings.local.json
 .idea/
 
-# Ignore everything in examples directory except agpm.toml
+# Ignore everything in examples directory except specific files and directories
 examples/*
+!examples/local/
+!examples/git/
+examples/local/*
 !examples/local/agpm.toml
 !examples/local/project*.md
+examples/git/*
 !examples/git/agpm.toml
 !examples/git/project*.md
 
